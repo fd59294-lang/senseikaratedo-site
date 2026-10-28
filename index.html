@@ -450,8 +450,7 @@
           </ul>
         </div>
         <div>
-          <!-- Remplacer VOTRE_ID par l'identifiant du formulaire Formspree -->
-          <form id="form-essai" action="https://formspree.io/f/VOTRE_ID" method="POST">
+          <form id="form-essai" action="https://formspree.io/f/meaaknjg" method="POST">
             <div class="row">
               <label>Nom et prénom<input name="nom" required autocomplete="name"></label>
               <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel"></label>
@@ -617,8 +616,8 @@
   const f = document.getElementById('form-essai');
   f.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (f.action.includes('VOTRE_ID')) {
-      /* Pas encore de service d'envoi : on prépare la demande dans WhatsApp ou par e-mail */
+    /* Secours si l'envoi échoue : la demande est préparée pour WhatsApp ou l'e-mail */
+    const secours = (intro) => {
       const d = new FormData(f);
       const txt = `Bonjour, je souhaite un cours d'essai.\nNom : ${d.get('nom')}\nTéléphone : ${d.get('telephone')}` +
         (d.get('email') ? `\nE-mail : ${d.get('email')}` : '') + `\nPour : ${d.get('pour')}\nJour préféré : ${d.get('jour')}` +
@@ -626,13 +625,14 @@
       const wa = 'https://wa.me/33749166370?text=' + encodeURIComponent(txt);
       const mail = 'mailto:contact@senseikaratedo.fr?subject=' + encodeURIComponent("Demande de cours d'essai") + '&body=' + encodeURIComponent(txt);
       const m = document.getElementById('merci');
-      m.innerHTML = `Dernière étape : envoyez votre demande, elle est déjà rédigée.<br><a class="btn small" style="margin-top:.6rem" href="${wa}" target="_blank" rel="noopener">Envoyer par WhatsApp</a> <a class="dl" href="${mail}">Envoyer par e-mail</a>`;
+      m.innerHTML = `${intro}<br><a class="btn small" style="margin-top:.6rem" href="${wa}" target="_blank" rel="noopener">Envoyer par WhatsApp</a> <a class="dl" href="${mail}">Envoyer par e-mail</a>`;
       m.style.display = 'block';
-      return;
-    }
+    };
+    const bouton = f.querySelector('button[type=submit]'); bouton.disabled = true;
     const r = await fetch(f.action, {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}}).catch(() => null);
-    if (r && r.ok) { f.reset(); document.getElementById('merci').style.display = 'block'; }
-    else { const m = document.getElementById('merci'); m.textContent = "L'envoi n'a pas marché. Réessayez dans un instant."; m.style.display = 'block'; }
+    bouton.disabled = false;
+    if (r && r.ok) { f.reset(); const m = document.getElementById('merci'); m.textContent = "Demande envoyée. On vous rappelle très vite pour fixer le jour."; m.style.display = 'block'; }
+    else secours("L'envoi n'a pas marché. Votre demande est prête, envoyez-la directement :");
   });
 </script>
 </body>
