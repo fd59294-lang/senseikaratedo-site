@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sensei Karaté Do · Club de karaté à Haussy (Nord)</title>
-<meta name="description" content="Club de karaté à Haussy, affilié FFKaraté. Cours enfants dès 7 ans, ados et adultes. 129 € la saison licence comprise. Cours d'essai gratuit.">
+<meta name="description" content="Club de karaté Shotokan à Haussy (59), affilié FFKaraté. Enfants dès 7 ans le mardi, ados et adultes le samedi. Dès 129 € la saison licence comprise. Cours d'essai gratuit.">
 <link rel="canonical" href="https://senseikaratedo.fr/">
 <meta property="og:url" content="https://senseikaratedo.fr/">
 <meta property="og:type" content="website">
@@ -187,6 +187,18 @@
   .palm b{color:var(--hi-ink);margin-right:.5rem}
   @media (max-width:640px){.ranks{grid-template-columns:1fr}.cal li{grid-template-columns:1fr}.cal .lv{text-align:left}}
 
+
+  /* Inscription */
+  .inscription .steps2{list-style:none;counter-reset:s;padding:0;margin:2rem 0 0;display:grid;gap:1rem}
+  .inscription .steps2 li{counter-increment:s;display:grid;grid-template-columns:2.6rem 1fr;gap:1rem;align-items:start;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .inscription .steps2 li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1;color:var(--hi-ink);text-align:center;padding-top:.15rem}
+  .inscription h3{font-size:1.15rem;margin-bottom:.3rem}
+  .inscription p{margin:0 0 .5rem}
+  .dl{display:inline-flex;align-items:center;gap:.45rem;font-weight:700;text-decoration:none;border:1.5px solid var(--sumi);border-radius:999px;padding:.45rem 1rem;margin:.3rem .4rem 0 0;font-size:.95rem}
+  .dl:hover{background:var(--sumi);color:#fff}
+  .dl small{font-weight:400;opacity:.7}
+  .who{font-size:.85rem;color:var(--grey);font-weight:400}
+
   /* Hymne */
   .hymne{background:var(--sumi);color:#fff}
   .hymne .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
@@ -228,6 +240,7 @@
         <li><a href="#apprendre">Apprendre</a></li>
         <li><a href="#competition">Compétition</a></li>
         <li><a href="#club">Le club</a></li>
+        <li><a href="#inscription">Inscription</a></li>
         <li><a href="#essai" class="btn small">Essai gratuit</a></li>
       </ul>
     </nav>
@@ -255,11 +268,11 @@
 
       <div class="week" role="list">
         <div class="day" role="listitem"><b>Lundi</b><span class="rest" aria-label="pas de cours">·</span></div>
-        <div class="day on" role="listitem"><b>Mardi</b><div class="slot"><span class="t">18h – 19h15</span><span class="w">Cours du club</span></div></div>
+        <div class="day on" role="listitem"><b>Mardi</b><div class="slot"><span class="t">18h – 19h15</span><span class="w">Enfants 7-12 ans</span></div></div>
         <div class="day" role="listitem"><b>Mercredi</b><span class="rest" aria-label="pas de cours">·</span></div>
         <div class="day" role="listitem"><b>Jeudi</b><span class="rest" aria-label="pas de cours">·</span></div>
         <div class="day" role="listitem"><b>Vendredi</b><span class="rest" aria-label="pas de cours">·</span></div>
-        <div class="day on" role="listitem"><b>Samedi</b><div class="slot"><span class="t">14h – 16h</span><span class="w">Cours du club</span></div></div>
+        <div class="day on" role="listitem"><b>Samedi</b><div class="slot"><span class="t">14h – 16h</span><span class="w">13 ans et adultes</span></div></div>
         <div class="day on" role="listitem"><b>Dimanche</b><div class="slot comp"><span class="t">9h – 12h</span><span class="w">Compétition, sur convocation</span></div></div>
       </div>
 
@@ -273,14 +286,14 @@
       <div class="prices">
         <div class="price">
           <div class="n">129<small>€</small></div>
-          <p><strong>Pour un adhérent</strong>, licence FFKaraté comprise, pour toute la saison.</p>
+          <p><strong>Enfants de 7 à 12 ans</strong>, cours du mardi. Licence FFKaraté comprise, pour toute la saison.</p>
         </div>
         <div class="price second">
-          <div class="n">99<small>€</small></div>
-          <p><strong>À partir du 2<sup>e</sup> adhérent</strong> de la même famille, soit 30 € de moins, licence comprise.</p>
+          <div class="n">139<small>€</small></div>
+          <p><strong>13 ans et adultes</strong>, cours du samedi. Licence FFKaraté comprise, pour toute la saison.</p>
         </div>
       </div>
-      <p class="includes">Le premier cours est gratuit et sans engagement. Venez en jogging, le kimono viendra après.</p>
+      <p class="includes">20 € de réduction pour le 2<sup>e</sup> membre d'une même famille. Le premier cours est gratuit et sans engagement : venez en jogging, le kimono viendra après.</p>
     </div>
   </section>
 
@@ -364,6 +377,28 @@
     </div>
   </section>
 
+  <section id="inscription" class="inscription" aria-labelledby="t-inscription">
+    <div class="wrap">
+      <h2 id="t-inscription">S'inscrire pour la saison 2026-2027</h2>
+      <p class="intro">Téléchargez les documents, remplissez-les et apportez le dossier complet au cours. Le dossier n'est définitif qu'une fois complet.</p>
+      <ol class="steps2">
+        <li><div><h3>Lire le règlement intérieur</h3>
+          <p>Il contient aussi la fiche d'adhésion, l'autorisation de droit à l'image et l'autorisation parentale, à remplir et signer.</p>
+          <a class="dl" href="docs/reglement-interieur-2026-2027.pdf" download>Règlement intérieur <small>PDF · 7 pages</small></a></div></li>
+        <li><div><h3>Remplir la demande de licence FFKaraté</h3>
+          <p>En majuscules, signée par l'adhérent ou par son représentant légal pour un mineur.</p>
+          <a class="dl" href="docs/demande-licence-ffk-2026-2027.pdf" download>Demande de licence 2026-2027 <small>PDF</small></a></div></li>
+        <li><div><h3>Le volet santé</h3>
+          <p><strong>Mineurs :</strong> remplissez le questionnaire de santé avec votre enfant et <strong>gardez-le</strong>. Si toutes les réponses sont « non », rendez seulement l'attestation sur l'honneur. Sinon, un certificat médical est demandé.</p>
+          <a class="dl" href="docs/questionnaire-sante-mineur.pdf" download>Questionnaire de santé <small>à garder</small></a>
+          <a class="dl" href="docs/attestation-honneur-mineur.pdf" download>Attestation sur l'honneur <small>à rendre</small></a>
+          <p style="margin-top:.8rem"><strong>Adultes :</strong> un certificat médical de non-contre-indication au karaté de moins de 3 ans.</p></div></li>
+        <li><div><h3>Compléter le dossier</h3>
+          <p>Une photo d'identité et la cotisation : 129 € (7-12 ans) ou 139 € (13 ans et adultes), 20 € de moins pour le 2<sup>e</sup> membre d'une même famille.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
   <section id="essai" class="essai" aria-labelledby="t-essai">
     <div class="wrap">
       <div class="cols">
@@ -387,16 +422,16 @@
             <div class="row">
               <label>Pour qui ?
                 <select name="pour">
-                  <option>Mon enfant (7-11 ans)</option>
-                  <option>Mon ado (12-17 ans)</option>
+                  <option>Mon enfant (7-12 ans)</option>
+                  <option>Mon ado (13-17 ans)</option>
                   <option>Moi, adulte</option>
                   <option>Plusieurs membres de la famille</option>
                 </select>
               </label>
               <label>Jour préféré
                 <select name="jour">
-                  <option>Mardi 18h – 19h15</option>
-                  <option>Samedi 14h – 16h</option>
+                  <option>Mardi 18h – 19h15 (7-12 ans)</option>
+                  <option>Samedi 14h – 16h (13 ans et +)</option>
                 </select>
               </label>
             </div>
