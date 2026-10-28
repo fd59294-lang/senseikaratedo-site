@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensei Karaté Do · Club de karaté à Haussy (Nord)</title>
+<meta name="description" content="Club de karaté à Haussy, affilié FFKaraté. Cours enfants dès 7 ans, ados et adultes. 129 € la saison licence comprise. Cours d'essai gratuit.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Sensei Karaté Do · Karaté à Haussy">
+<meta property="og:description" content="Enfants dès 7 ans, ados, adultes. Cours d'essai gratuit.">
+<meta property="og:image" content="https://senseikaratedo.fr/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sumi:#000;           /* encre du logo */
+    --hi:#E8392E;          /* soleil rouge du logo */
+    --hi-ink:#B4231A;      /* rouge lisible sur blanc pour le texte */
+    --paper:#fff;
+    --wash:#F0F0EE;        /* lavis d'encre très clair */
+    --grey:#55534F;
+    --line:#D8D6D2;
+    --display:"Shippori Mincho B1", "Hiragino Mincho ProN", Georgia, serif;
+    --body:"Zen Kaku Gothic New", "Segoe UI", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--paper);color:var(--sumi);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--hi);outline-offset:3px;border-radius:2px}
+  .wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.12;margin:0}
+  h2{font-size:clamp(1.9rem,4vw,2.75rem);letter-spacing:-.01em}
+  h3{font-size:1.25rem;font-weight:600}
+  p{margin:0 0 1em;max-width:62ch}
+
+  /* En-tête */
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.1rem}
+  .brand img{width:44px;height:44px}
+  nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;align-items:center}
+  nav a{text-decoration:none;font-weight:500}
+  nav a:hover{color:var(--hi-ink)}
+  .btn{display:inline-block;background:var(--sumi);color:#fff;text-decoration:none;font-weight:700;padding:.8rem 1.4rem;border-radius:999px;border:0;font:700 1rem var(--body);cursor:pointer}
+  .btn:hover{background:var(--hi-ink)}
+  .btn.small{padding:.55rem 1.1rem;font-size:.95rem}
+  @media (max-width:760px){nav li:not(:last-child){display:none}}
+
+  /* Hero : le soleil rouge */
+  .hero{position:relative;overflow:hidden;padding:clamp(3.5rem,9vw,7rem) 0 clamp(3rem,7vw,5.5rem)}
+  .sun{position:absolute;right:-6vw;top:50%;width:min(56vw,620px);aspect-ratio:1;border-radius:50%;background:var(--hi);transform:translateY(-50%) scale(.6);opacity:0;animation:rise 1.4s cubic-bezier(.2,.7,.2,1) .15s forwards}
+  @keyframes rise{to{transform:translateY(-50%) scale(1);opacity:1}}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,7vw,5rem);letter-spacing:-.02em}
+  .hero .lead{font-size:1.2rem;margin:1.4rem 0 2rem;max-width:34ch}
+  .hero .logo{width:min(100%,400px);justify-self:center;filter:drop-shadow(0 0 0 #fff)}
+  .hero .meta{margin-top:1.2rem;color:var(--grey);font-size:.95rem}
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr}
+    .sun{right:-30vw;top:20%;width:90vw}
+    .hero .logo{grid-row:1;width:220px;justify-self:start}
+  }
+
+  section{padding:clamp(3.5rem,8vw,6rem) 0}
+  .intro{color:var(--grey);font-size:1.1rem;margin-top:.8rem}
+
+  /* Semaine */
+  .week{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin-top:2.5rem}
+  .day{border-top:3px solid var(--line);padding-top:.7rem;min-height:9.5rem}
+  .day b{display:block;font-weight:700;margin-bottom:.6rem}
+  .day.on{border-top-color:var(--hi)}
+  .slot{background:var(--sumi);color:#fff;border-radius:10px;padding:.7rem .75rem;line-height:1.35}
+  .slot .t{font-weight:700;font-size:1.05rem;display:block}
+  .slot .w{font-size:.88rem;opacity:.85}
+  .slot.comp{background:var(--hi);color:#000}
+  .slot.comp .w{opacity:1}
+  .rest{color:var(--line);font-size:1.6rem;line-height:1}
+  .where{margin-top:2rem;display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+  @media (max-width:760px){
+    .week{grid-template-columns:1fr;gap:0}
+    .day{min-height:0;display:grid;grid-template-columns:5.5rem 1fr;align-items:center;padding:.75rem 0;border-top-width:1px}
+    .day b{margin:0}
+    .day.on{border-top:1px solid var(--line);box-shadow:inset 3px 0 0 var(--hi);padding-left:.8rem}
+    .day:not(.on){display:none}
+  }
+
+  /* Tarifs */
+  .tarifs{background:var(--wash)}
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,4rem);margin-top:2.5rem;align-items:end}
+  .price .n{font-family:var(--display);font-weight:800;font-size:clamp(4rem,12vw,7.5rem);line-height:1;letter-spacing:-.03em}
+  .price .n small{font-size:.4em;margin-left:.15em}
+  .price p{margin-top:.6rem}
+  .price.second .n{color:var(--hi-ink)}
+  .includes{margin-top:2.5rem;color:var(--grey)}
+  @media (max-width:600px){.prices{grid-template-columns:1fr}}
+
+  /* Club */
+  .club .cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+  .facts{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+  .facts li{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+  .facts span:first-child{color:var(--grey)}
+  .facts span:last-child{font-weight:700;text-align:right}
+  @media (max-width:760px){.club .cols{grid-template-columns:1fr}}
+
+
+  /* Apprendre */
+  .apprendre{background:var(--wash)}
+  .tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:2rem 0 1.8rem}
+  .tab{font:700 1rem var(--body);padding:.6rem 1.2rem;border-radius:999px;border:1.5px solid var(--sumi);background:transparent;color:var(--sumi);cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--sumi);color:#fff}
+  .panel[hidden]{display:none}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.9rem}
+  .card{background:#fff;border-radius:12px;padding:1.1rem 1.2rem;border:1px solid var(--line)}
+  .card .jp{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1.2}
+  .card .dire{color:var(--hi-ink);font-size:.92rem;margin:.15rem 0 .5rem}
+  .card p{margin:0;font-size:.98rem}
+  .grid.wide{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .group{margin:1.8rem 0 .8rem;font-family:var(--display);font-weight:600;font-size:1.2rem}
+  .group:first-child{margin-top:0}
+  .kata{display:grid;grid-template-columns:4.2rem 1fr;gap:1rem;align-items:start}
+  .kata .mv{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;color:var(--hi-ink);text-align:center}
+  .kata .mv small{display:block;font:500 .75rem var(--body);color:var(--grey);margin-top:.2rem}
+  .kata .sens{color:var(--grey);font-size:.95rem;margin:.1rem 0 .4rem}
+  .quizbar{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+  .flash{background:#fff;border-radius:16px;border:1px solid var(--line);padding:2.2rem 1.5rem;text-align:center;max-width:520px}
+  .flash .jp{font-family:var(--display);font-weight:800;font-size:2.6rem}
+  .flash .rep{margin-top:1rem;min-height:3.2em}
+  .flash .btns{display:flex;gap:.6rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap}
+  .btn.ghost{background:transparent;color:var(--sumi);border:1.5px solid var(--sumi)}
+  .btn.ghost:hover{background:var(--sumi);color:#fff}
+  .soon{margin-top:1.4rem;color:var(--grey)}
+
+
+  /* Ceinture du mois */
+  .cdm{background:#fff;border-radius:16px;border:1px solid var(--line);padding:clamp(1.3rem,3vw,2rem);margin:2rem 0 2.5rem}
+  .cdm-head{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+  .belt{width:96px;height:22px;border-radius:4px;border:1.5px solid var(--sumi);position:relative;flex:none}
+  .belt::after{content:"";position:absolute;left:50%;top:-6px;width:14px;height:32px;margin-left:-7px;border-radius:3px;background:inherit;border:1.5px solid var(--sumi)}
+  .cdm h3{font-size:1.6rem;font-weight:800}
+  .cdm .quiet{color:var(--grey);margin:.2rem 0 0}
+  .cdm .intro2{font-family:var(--display);font-size:1.2rem;line-height:1.5;margin:1.3rem 0 1.6rem;max-width:60ch}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;list-style:none;padding:0;margin:0}
+  .step{border-top:4px solid var(--line);padding-top:.7rem}
+  .step.done{border-top-color:var(--sumi)}
+  .step.now{border-top-color:var(--hi)}
+  .step .sem{font-size:.85rem;color:var(--grey)}
+  .step b{display:block;font-family:var(--display);font-size:1.1rem;line-height:1.25}
+  .step.next b{color:var(--grey)}
+  .focus{margin-top:1.6rem;border-left:4px solid var(--hi);padding:.2rem 0 .2rem 1.1rem}
+  .focus h4{margin:0 0 .4rem;font-size:1.05rem}
+  .focus ul{margin:.6rem 0 0;padding-left:1.1rem}
+  .focus li{margin:.3rem 0}
+  @media (max-width:640px){.steps{grid-template-columns:1fr 1fr}}
+
+  /* Hymne */
+  .hymne{background:var(--sumi);color:#fff}
+  .hymne .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
+  .disc{width:150px;height:150px;border-radius:50%;background:var(--hi);display:grid;place-items:center}
+  .disc img{width:120px;border-radius:50%;background:#fff}
+  .hymne p{color:#d6d6d6}
+  .hymne blockquote{margin:1.2rem 0 1.4rem;font-family:var(--display);font-size:1.35rem;line-height:1.4;border-left:3px solid var(--hi);padding-left:1rem}
+  audio{width:min(100%,460px)}
+  @media (max-width:600px){.hymne .wrap{grid-template-columns:1fr}}
+
+  /* Essai */
+  .essai .cols{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;margin-top:1rem}
+  form{display:grid;gap:1rem}
+  label{font-weight:700;display:grid;gap:.35rem}
+  input,select,textarea{font:inherit;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--sumi);width:100%}
+  input:focus,select:focus,textarea:focus{border-color:var(--sumi);outline:none}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .note{font-size:.9rem;color:var(--grey);font-weight:400}
+  #merci{display:none;background:var(--wash);border-left:4px solid var(--hi);padding:1rem 1.2rem;border-radius:6px}
+  @media (max-width:760px){.essai .cols,.row{grid-template-columns:1fr}}
+
+  .contact{margin-top:2rem}
+  .contact a{text-decoration:none}
+  .contact a:hover{text-decoration:underline}
+  footer{border-top:1px solid var(--line);padding:2.5rem 0;color:var(--grey);font-size:.95rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+  footer a{font-weight:700;color:var(--sumi)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="logo.png" alt="" width="44" height="44">Sensei Karaté Do</a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#cours">Cours</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#apprendre">Apprendre</a></li>
+        <li><a href="#club">Le club</a></li>
+        <li><a href="#essai" class="btn small">Essai gratuit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="titre">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <h1 id="titre">Le karaté à Haussy, dès 7 ans.</h1>
+        <p class="lead">Enfants, ados et adultes débutants. On apprend le respect, la confiance et l'énergie, à son rythme.</p>
+        <a class="btn" href="#essai">Réserver un cours d'essai gratuit</a>
+        <p class="meta">Club affilié à la FFKaraté · n° 0590861</p>
+      </div>
+      <img class="logo" src="logo.png" alt="Logo Sensei Karaté Do : un bonsaï devant un soleil rouge dans un cercle d'encre" width="400" height="400">
+    </div>
+  </section>
+
+  <section id="cours" aria-labelledby="t-cours">
+    <div class="wrap">
+      <h2 id="t-cours">Trois rendez-vous par semaine</h2>
+      <p class="intro">Les cours ont lieu à la Médiathèque de Haussy. Le dimanche matin est réservé au groupe compétition, sur convocation.</p>
+
+      <div class="week" role="list">
+        <div class="day" role="listitem"><b>Lundi</b><span class="rest" aria-label="pas de cours">·</span></div>
+        <div class="day on" role="listitem"><b>Mardi</b><div class="slot"><span class="t">18h – 19h15</span><span class="w">Cours du club</span></div></div>
+        <div class="day" role="listitem"><b>Mercredi</b><span class="rest" aria-label="pas de cours">·</span></div>
+        <div class="day" role="listitem"><b>Jeudi</b><span class="rest" aria-label="pas de cours">·</span></div>
+        <div class="day" role="listitem"><b>Vendredi</b><span class="rest" aria-label="pas de cours">·</span></div>
+        <div class="day on" role="listitem"><b>Samedi</b><div class="slot"><span class="t">14h – 16h</span><span class="w">Cours du club</span></div></div>
+        <div class="day on" role="listitem"><b>Dimanche</b><div class="slot comp"><span class="t">9h – 12h</span><span class="w">Compétition, sur convocation</span></div></div>
+      </div>
+
+      <p class="where"><strong>Médiathèque de Haussy</strong><span>Haussy, Nord (59294)</span></p>
+    </div>
+  </section>
+
+  <section id="tarifs" class="tarifs" aria-labelledby="t-tarifs">
+    <div class="wrap">
+      <h2 id="t-tarifs">Saison 2026-2027</h2>
+      <div class="prices">
+        <div class="price">
+          <div class="n">129<small>€</small></div>
+          <p><strong>Pour un adhérent</strong>, licence FFKaraté comprise, pour toute la saison.</p>
+        </div>
+        <div class="price second">
+          <div class="n">99<small>€</small></div>
+          <p><strong>À partir du 2<sup>e</sup> adhérent</strong> de la même famille, soit 30 € de moins, licence comprise.</p>
+        </div>
+      </div>
+      <p class="includes">Le premier cours est gratuit et sans engagement. Venez en jogging, le kimono viendra après.</p>
+    </div>
+  </section>
+
+  <section id="apprendre" class="apprendre" aria-labelledby="t-apprendre">
+    <div class="wrap">
+      <h2 id="t-apprendre">Apprendre le karaté Shotokan</h2>
+      <p class="intro">Les mots, les techniques et les katas vus au dojo, pour réviser à la maison. Une nouvelle fiche chaque semaine.</p>
+      <article class="cdm" id="cdm" aria-labelledby="cdm-titre" hidden></article>
+      <div class="tabs" role="tablist" aria-label="Rubriques">
+        <button class="tab" role="tab" id="tab-lexique" aria-controls="p-lexique" aria-selected="true">Les mots du dojo</button>
+        <button class="tab" role="tab" id="tab-kihon" aria-controls="p-kihon" aria-selected="false" tabindex="-1">Kihon</button>
+        <button class="tab" role="tab" id="tab-katas" aria-controls="p-katas" aria-selected="false" tabindex="-1">Katas</button>
+        <button class="tab" role="tab" id="tab-nunchaku" aria-controls="p-nunchaku" aria-selected="false" tabindex="-1">Nunchaku</button>
+      </div>
+      <div class="panel" id="p-lexique" role="tabpanel" aria-labelledby="tab-lexique">
+        <div class="quizbar"><button class="btn small" id="quiz-on" type="button">Me tester</button><span class="note" id="lex-count"></span></div>
+        <div id="quiz" hidden>
+          <div class="flash">
+            <div class="jp" id="q-jp"></div>
+            <div class="rep" id="q-rep" aria-live="polite"></div>
+            <div class="btns">
+              <button class="btn ghost small" id="q-show" type="button">Voir la réponse</button>
+              <button class="btn small" id="q-next" type="button">Mot suivant</button>
+              <button class="btn ghost small" id="quiz-off" type="button">Voir toute la liste</button>
+            </div>
+          </div>
+        </div>
+        <div class="grid" id="lexique"></div>
+      </div>
+      <div class="panel" id="p-kihon" role="tabpanel" aria-labelledby="tab-kihon" hidden><div id="kihon"></div></div>
+      <div class="panel" id="p-katas" role="tabpanel" aria-labelledby="tab-katas" hidden><div class="grid wide" id="katas"></div></div>
+      <div class="panel" id="p-nunchaku" role="tabpanel" aria-labelledby="tab-nunchaku" hidden>
+        <div class="grid" id="nunchaku"></div>
+        <p class="soon">Le nunchaku se développe au club. Les fiches arrivent au fil des séances.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="club" class="club" aria-labelledby="t-club">
+    <div class="wrap">
+      <h2 id="t-club">Un petit dojo, un vrai suivi</h2>
+      <div class="cols">
+        <div>
+          <p>Sensei Karaté Do est né en 2023 à Haussy. Ici, les groupes sont petits : chacun est corrigé, encouragé et suivi, du premier salut jusqu'à la ceinture noire.</p>
+          <p>Le club accompagne aussi ceux qui veulent aller plus loin, avec une préparation compétition le dimanche matin, sur convocation.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Création</span><span>2023</span></li>
+          <li><span>Fédération</span><span>FFKaraté n° 0590861</span></li>
+          <li><span>Enseignant</span><span>Fred, 2<sup>e</sup> dan, diplômé DIF</span></li>
+          <li><span>Ceinture noire</span><span>Depuis 2017</span></li>
+          <li><span>Public</span><span>Enfants dès 7 ans, ados, adultes</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="hymne" aria-labelledby="t-hymne">
+    <div class="wrap">
+      <div class="disc" aria-hidden="true"><img src="logo.png" alt=""></div>
+      <div>
+        <h2 id="t-hymne">L'hymne du club</h2>
+        <blockquote>On compte les efforts, pas les excuses.</blockquote>
+        <audio controls preload="none" src="hymne.mp3">Votre navigateur ne lit pas l'audio.</audio>
+      </div>
+    </div>
+  </section>
+
+  <section id="essai" class="essai" aria-labelledby="t-essai">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h2 id="t-essai">Venez essayer</h2>
+          <p class="intro">Laissez vos coordonnées. On vous rappelle pour fixer votre cours d'essai, mardi ou samedi.</p>
+          <ul class="facts contact">
+            <li><span>Téléphone</span><span><a href="tel:+33749166370">07 49 16 63 70</a></span></li>
+            <li><span>WhatsApp</span><span><a href="https://wa.me/33749166370" rel="noopener">07 49 16 63 70</a></span></li>
+            <li><span>E-mail</span><span><a href="mailto:senseikaratedo59@gmail.com">senseikaratedo59@gmail.com</a></span></li>
+          </ul>
+        </div>
+        <div>
+          <!-- Remplacer VOTRE_ID par l'identifiant du formulaire Formspree -->
+          <form id="form-essai" action="https://formspree.io/f/VOTRE_ID" method="POST">
+            <div class="row">
+              <label>Nom et prénom<input name="nom" required autocomplete="name"></label>
+              <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel"></label>
+            </div>
+            <label>E-mail<input name="email" type="email" autocomplete="email"></label>
+            <div class="row">
+              <label>Pour qui ?
+                <select name="pour">
+                  <option>Mon enfant (7-11 ans)</option>
+                  <option>Mon ado (12-17 ans)</option>
+                  <option>Moi, adulte</option>
+                  <option>Plusieurs membres de la famille</option>
+                </select>
+              </label>
+              <label>Jour préféré
+                <select name="jour">
+                  <option>Mardi 18h – 19h15</option>
+                  <option>Samedi 14h – 16h</option>
+                </select>
+              </label>
+            </div>
+            <label>Un mot ? <span class="note">Facultatif</span><textarea name="message" rows="3"></textarea></label>
+            <button class="btn" type="submit">Demander mon cours d'essai</button>
+            <p id="merci" role="status">Demande envoyée. On vous rappelle très vite pour fixer le jour.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Sensei Karaté Do · Haussy (Nord) · FFKaraté n° 0590861 · 07 49 16 63 70</span>
+    <a href="https://www.facebook.com/share/1EfuuKDL6k/" rel="noopener">Suivre le club sur Facebook</a>
+  </div>
+</footer>
+
+<script src="contenu.js"></script>
+
+<script>
+
+  /* Ceinture du mois */
+  (function(){
+    const c = (window.CONTENU || {}).ceintureDuMois; if (!c) return;
+    const esc = t => String(t).replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
+    const jours = Math.floor((Date.now() - Date.parse(c.debut + 'T00:00:00')) / 864e5);
+    const n = Math.max(0, Math.min(c.semaines.length - 1, Math.floor(jours / 7)));
+    const avant = jours < 0;
+    const etat = i => avant ? 'next' : i < n ? 'done' : i === n ? 'now' : 'next';
+    const s = c.semaines[n];
+    const el = document.getElementById('cdm');
+    el.innerHTML = `
+      <div class="cdm-head"><span class="belt" style="background:${esc(c.couleur)}" aria-hidden="true"></span>
+        <div><h3 id="cdm-titre">Ceinture du mois : ${esc(c.ceinture)}</h3>
+        <p class="quiet">On étudie le programme de cette ceinture. Le grade vient quand le sensei le décide.</p></div></div>
+      <p class="intro2">${esc(c.intro)}</p>
+      <ol class="steps">${c.semaines.map((w, i) => `<li class="step ${etat(i)}"${etat(i) === 'now' ? ' aria-current="step"' : ''}><span class="sem">Semaine ${i + 1}</span><b>${esc(w.titre)}</b></li>`).join('')}</ol>
+      <div class="focus"><h4>${avant ? 'Pour commencer' : 'Cette semaine'} : ${esc(s.titre)}</h4><p>${esc(s.texte)}</p>
+        <ul>${s.points.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`;
+    el.hidden = false;
+  })();
+
+  /* Rubrique Apprendre : tout vient de contenu.js */
+  (function(){
+    const C = window.CONTENU || {lexique:[],kihon:[],katas:[],nunchaku:[]};
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    document.getElementById('lexique').innerHTML = C.lexique.map(m =>
+      `<div class="card"><div class="jp">${esc(m.jp)}</div><div class="dire">se dit « ${esc(m.dire)} »</div><p>${esc(m.sens)}</p></div>`).join('');
+    document.getElementById('lex-count').textContent = C.lexique.length + ' mots';
+    const groupes = [...new Set(C.kihon.map(k => k.groupe))];
+    document.getElementById('kihon').innerHTML = groupes.map(g =>
+      `<h3 class="group">${esc(g)}</h3><div class="grid">` +
+      C.kihon.filter(k => k.groupe === g).map(k => `<div class="card"><div class="jp">${esc(k.jp)}</div><p>${esc(k.sens)}</p></div>`).join('') +
+      `</div>`).join('');
+    document.getElementById('katas').innerHTML = C.katas.map(k =>
+      `<div class="card kata"><div class="mv">${esc(k.mouv)}<small>mouvements</small></div><div><div class="jp">${esc(k.nom)}</div><div class="sens">${esc(k.sens)}</div><p>${esc(k.note)}</p></div></div>`).join('');
+    document.getElementById('nunchaku').innerHTML = C.nunchaku.map(n =>
+      `<div class="card"><div class="jp">${esc(n.titre)}</div><p>${esc(n.texte)}</p></div>`).join('');
+
+    const tabs = [...document.querySelectorAll('.tab')];
+    const select = t => tabs.forEach(x => {
+      const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', e => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { const n = tabs.at((i + d) % tabs.length); select(n); n.focus(); }
+      });
+    });
+
+    let ordre = [], pos = 0;
+    const quiz = document.getElementById('quiz'), liste = document.getElementById('lexique');
+    const montrer = () => { const m = C.lexique[ordre[pos]]; document.getElementById('q-jp').textContent = m.jp; document.getElementById('q-rep').textContent = ''; };
+    document.getElementById('quiz-on').addEventListener('click', () => {
+      ordre = C.lexique.map((_, i) => i).sort(() => Math.random() - .5); pos = 0;
+      quiz.hidden = false; liste.hidden = true; montrer(); document.getElementById('q-show').focus();
+    });
+    document.getElementById('q-show').addEventListener('click', () => {
+      const m = C.lexique[ordre[pos]]; document.getElementById('q-rep').textContent = `« ${m.dire} » : ${m.sens}`;
+    });
+    document.getElementById('q-next').addEventListener('click', () => { pos = (pos + 1) % ordre.length; montrer(); });
+    document.getElementById('quiz-off').addEventListener('click', () => { quiz.hidden = true; liste.hidden = false; });
+  })();
+
+  const f = document.getElementById('form-essai');
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (f.action.includes('VOTRE_ID')) { const m = document.getElementById('merci'); m.textContent = "Formulaire en cours de mise en service : appelez ou écrivez sur WhatsApp au 07 49 16 63 70."; m.style.display = 'block'; return; }
+    const r = await fetch(f.action, {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}}).catch(() => null);
+    if (r && r.ok) { f.reset(); document.getElementById('merci').style.display = 'block'; }
+    else { const m = document.getElementById('merci'); m.textContent = "L'envoi n'a pas marché. Réessayez dans un instant."; m.style.display = 'block'; }
+  });
+</script>
+</body>
+</html>
