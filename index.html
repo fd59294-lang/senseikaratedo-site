@@ -158,6 +158,28 @@
   .focus li{margin:.3rem 0}
   @media (max-width:640px){.steps{grid-template-columns:1fr 1fr}}
 
+
+  /* Compétition */
+  .compet .lead2{color:var(--grey);margin-top:.6rem}
+  .ranks{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.2rem 0 .6rem;list-style:none;padding:0}
+  .rank{border-top:4px solid var(--sumi);padding-top:.9rem}
+  .rank:first-child{border-top-color:var(--hi)}
+  .rank .r{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7vw,4rem);line-height:1}
+  .rank .l{font-family:var(--display);font-size:1.2rem;margin-left:.25rem}
+  .rank p{margin:.5rem 0 0;color:var(--grey);font-size:.95rem}
+  .maj{font-size:.88rem;color:var(--grey)}
+  .cal{list-style:none;padding:0;margin:1.2rem 0 0;border-top:1px solid var(--line)}
+  .cal li{display:grid;grid-template-columns:9.5rem 1fr auto;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .cal .d{font-weight:700}
+  .cal .n{font-weight:500}
+  .cal .n span{display:block;color:var(--grey);font-size:.92rem;font-weight:400}
+  .cal .lv{font-size:.85rem;color:var(--grey);text-align:right}
+  .compet h3.sub{margin-top:3rem;font-size:1.35rem}
+  .palm{list-style:none;padding:0;margin:1rem 0 0}
+  .palm li{padding:.6rem 0;border-bottom:1px solid var(--line)}
+  .palm b{color:var(--hi-ink);margin-right:.5rem}
+  @media (max-width:640px){.ranks{grid-template-columns:1fr}.cal li{grid-template-columns:1fr}.cal .lv{text-align:left}}
+
   /* Hymne */
   .hymne{background:var(--sumi);color:#fff}
   .hymne .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
@@ -197,6 +219,7 @@
         <li><a href="#cours">Cours</a></li>
         <li><a href="#tarifs">Tarifs</a></li>
         <li><a href="#apprendre">Apprendre</a></li>
+        <li><a href="#competition">Compétition</a></li>
         <li><a href="#club">Le club</a></li>
         <li><a href="#essai" class="btn small">Essai gratuit</a></li>
       </ul>
@@ -289,6 +312,21 @@
     </div>
   </section>
 
+  <section id="competition" class="compet" aria-labelledby="t-compet">
+    <div class="wrap">
+      <h2 id="t-compet">Le club en compétition</h2>
+      <p class="lead2" id="compet-intro"></p>
+      <ol class="ranks" id="ranks"></ol>
+      <p class="maj" id="compet-maj"></p>
+      <div id="palm-wrap" hidden>
+        <h3 class="sub">Résultats</h3>
+        <ul class="palm" id="palm"></ul>
+      </div>
+      <h3 class="sub">Le calendrier kata de la saison</h3>
+      <ul class="cal" id="cal"></ul>
+    </div>
+  </section>
+
   <section id="club" class="club" aria-labelledby="t-club">
     <div class="wrap">
       <h2 id="t-club">Un petit dojo, un vrai suivi</h2>
@@ -375,6 +413,31 @@
 <script src="contenu.js"></script>
 
 <script>
+
+
+  /* Compétition */
+  (function(){
+    const c = (window.CONTENU || {}).competition; if (!c) return;
+    const esc = t => String(t).replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
+    const mois = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+    const jour = d => `${Number(d.slice(8))} ${mois.at(Number(d.slice(5,7)) - 1)}`;
+    const an = d => d.slice(0,4);
+    const quand = e => e.fin ? (e.fin.slice(5,7) === e.date.slice(5,7) ? `${Number(e.date.slice(8))}-${jour(e.fin)}` : `${jour(e.date)} - ${jour(e.fin)}`) : jour(e.date);
+    document.getElementById('compet-intro').textContent = `${c.athlete}, compétitrice du club en ${c.discipline.toLowerCase()}. Son classement, mis à jour chaque semaine.`;
+    document.getElementById('ranks').innerHTML = c.classements.map(r =>
+      `<li class="rank"><span class="r">${esc(r.rang)}</span><span class="l">${esc(r.libelle)}</span><p>${esc(r.detail)}</p></li>`).join('');
+    document.getElementById('compet-maj').textContent = `Classement au ${jour(c.majLe)} ${an(c.majLe)}.`;
+    if (c.palmares && c.palmares.length) {
+      document.getElementById('palm').innerHTML = c.palmares.slice().sort((a,b) => b.date.localeCompare(a.date)).map(p =>
+        `<li><b>${esc(p.place)}</b>${esc(p.competition)} · ${esc(p.lieu)} · ${esc(p.categorie)} · ${jour(p.date)} ${an(p.date)}</li>`).join('');
+      document.getElementById('palm-wrap').hidden = false;
+    }
+    const auj = new Date().toISOString().slice(0,10);
+    const a_venir = c.calendrier.filter(e => (e.fin || e.date) >= auj);
+    document.getElementById('cal').innerHTML = a_venir.map(e =>
+      `<li><span class="d">${quand(e)} ${an(e.date)}</span><span class="n">${esc(e.nom)}<span>${esc(e.lieu)}</span></span><span class="lv">${esc(e.niveau)}</span></li>`).join('')
+      || '<li>Le calendrier de la prochaine saison arrive bientôt.</li>';
+  })();
 
   /* Ceinture du mois */
   (function(){

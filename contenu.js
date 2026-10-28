@@ -5,6 +5,31 @@
    ========================================================= */
 window.CONTENU = {
 
+  /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
+     On ne publie QUE la ligne de Julie, jamais celle des autres athlètes. */
+  competition: {
+    majLe: "2026-10-27",
+    athlete: "Julie",
+    discipline: "Kata",
+    classements: [
+      { rang: "15e", libelle: "française", detail: "Juniors filles, top français" },
+      { rang: "333e", libelle: "mondiale", detail: "Juniors filles, classement WKF" },
+      { rang: "617e", libelle: "mondiale", detail: "Seniors filles, classement WKF" }
+    ],
+    /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
+    palmares: [],
+    /* Calendrier kata de la saison (pas forcément les inscriptions de Julie) */
+    calendrier: [
+      { date: "2026-11-07", fin: "",           nom: "Samoerai Leuven Open",                 lieu: "Louvain (Belgique)",            niveau: "Open international" },
+      { date: "2026-11-29", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional" },
+      { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" },
+      { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF" },
+      { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international" },
+      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international" },
+      { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" }
+    ]
+  },
+
   /* CEINTURE DU MOIS
      debut = lundi de la semaine 1 (AAAA-MM-JJ). Le site affiche la semaine en cours tout seul.
      Pour passer à la ceinture suivante : remplacer ce bloc. */
