@@ -17,14 +17,18 @@ window.CONTENU = {
       { rang: "617e", libelle: "mondiale", detail: "Seniors filles, classement WKF" }
     ],
     /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
-    palmares: [],
+    palmares: [
+      { date: "2026-10-18", competition: "Championnat départemental Nord", lieu: "Nord (59)", place: "2e", categorie: "Juniors F" },
+      { date: "2026-10-18", competition: "Championnat départemental Nord", lieu: "Nord (59)", place: "3e", categorie: "Seniors F" }
+    ],
     /* Calendrier kata de la saison (pas forcément les inscriptions de Julie) */
     calendrier: [
       { date: "2026-11-07", fin: "",           nom: "Samoerai Leuven Open",                 lieu: "Louvain (Belgique)",            niveau: "Open international" },
-      { date: "2026-11-29", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional" },
+      { date: "2026-11-28", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional" },
       { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" },
       { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF" },
       { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international" },
+      { date: "2027-02-05", fin: "",           nom: "Championnats d'Europe cadets, juniors, U21", lieu: "Erevan (Arménie)",        niveau: "EKF" },
       { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international" },
       { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" }
     ]
@@ -61,6 +65,7 @@ window.CONTENU = {
   /* Mots du dojo : jp = mot japonais, dire = prononciation, sens = traduction */
   lexique: [
     { jp: "Rei",         dire: "rèï",          sens: "Salut. On salue en entrant et en sortant du dojo." },
+    { jp: "Ritsu-rei",   dire: "ri-tsou-rèï",  sens: "Le salut debout, talons joints, mains le long des cuisses." },
     { jp: "Oss",         dire: "oss",          sens: "J'ai compris, je suis prêt. Marque l'engagement." },
     { jp: "Sensei",      dire: "sèn-sèï",      sens: "Professeur, celui qui est né avant." },
     { jp: "Senpai",      dire: "sèn-païe",     sens: "Élève plus ancien, qui montre l'exemple." },
