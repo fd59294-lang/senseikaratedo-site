@@ -389,7 +389,7 @@
 
   <section id="competition" class="compet" aria-labelledby="t-compet">
     <div class="wrap">
-      <h2 id="t-compet">Le club en compétition</h2>
+      <h2 id="t-compet">Julie, assistante du club, en compétition</h2>
       <p class="lead2" id="compet-intro"></p>
       <ol class="ranks" id="ranks"></ol>
       <p class="maj" id="compet-maj"></p>
@@ -587,7 +587,7 @@
     const jour = d => `${Number(d.slice(8))} ${mois.at(Number(d.slice(5,7)) - 1)}`;
     const an = d => d.slice(0,4);
     const quand = e => e.fin ? (e.fin.slice(5,7) === e.date.slice(5,7) ? `${Number(e.date.slice(8))}-${jour(e.fin)}` : `${jour(e.date)} - ${jour(e.fin)}`) : jour(e.date);
-    document.getElementById('compet-intro').textContent = `${c.athlete}, compétitrice du club en ${c.discipline.toLowerCase()}. Son classement, mis à jour chaque semaine.`;
+    document.getElementById('compet-intro').textContent = `${c.athlete} s'entraîne au dojo et assiste l'entraîneur pendant les cours. Elle suit aussi un parcours en compétition de ${c.discipline.toLowerCase()} : son classement, mis à jour chaque semaine.`;
     document.getElementById('ranks').innerHTML = c.classements.map(r =>
       `<li class="rank"><span class="r">${esc(r.rang)}</span><span class="l">${esc(r.libelle)}</span><p>${esc(r.detail)}</p></li>`).join('');
     document.getElementById('compet-maj').textContent = `Classement au ${jour(c.majLe)} ${an(c.majLe)}.`;
