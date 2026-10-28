@@ -99,6 +99,8 @@
 
   /* Tarifs */
   .tarifs{background:var(--wash)}
+  .tarifs .pass{margin-top:1.2rem;background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;max-width:none}
+  .tarifs .pass a{font-weight:700}
   .prices{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,4rem);margin-top:2.5rem;align-items:end}
   .price .n{font-family:var(--display);font-weight:800;font-size:clamp(4rem,12vw,7.5rem);line-height:1;letter-spacing:-.03em}
   .price .n small{font-size:.4em;margin-left:.15em}
@@ -317,6 +319,7 @@
         </div>
       </div>
       <p class="includes">20 € de réduction pour le 2<sup>e</sup> membre d'une même famille. Le premier cours est gratuit et sans engagement : venez en jogging, le kimono viendra après.</p>
+      <p class="pass" id="pass-sport" hidden></p>
     </div>
   </section>
 
@@ -501,6 +504,17 @@
     document.getElementById('annonce-txt').textContent = a.texte;
     if (a.lien && a.lienTexte) { const l = document.getElementById('annonce-lien'); l.href = a.lien; l.textContent = a.lienTexte; l.hidden = false; }
     document.getElementById('annonce').hidden = false;
+  })();
+
+  /* Pass'Sport : visible jusqu'à la veille de finLe */
+  (function(){
+    const p = (window.CONTENU || {}).passSport; if (!p || !p.texte) return;
+    const d = new Date(), auj = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (p.finLe && auj >= p.finLe) return;
+    const el = document.getElementById('pass-sport');
+    el.textContent = p.texte + ' ';
+    if (p.lien) { const a = document.createElement('a'); a.href = p.lien; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Vérifier son éligibilité'; el.appendChild(a); }
+    el.hidden = false;
   })();
 
   /* Le club en images */

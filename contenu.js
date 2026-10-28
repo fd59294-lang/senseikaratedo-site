@@ -15,6 +15,14 @@ window.CONTENU = {
     finLe: "2026-11-05"
   },
 
+  /* PASS'SPORT — encart dans les tarifs, masqué tout seul à partir de "finLe" (lendemain de la date limite).
+     Saison suivante : mettre à jour le texte et la date (vérifier sur pass.sports.gouv.fr). */
+  passSport: {
+    texte: "Pass'Sport accepté : 50 € de réduction pour les jeunes éligibles (6-17 ans selon le quotient familial CAF ou MSA, et certains bénéficiaires de l'AEEH, de l'AAH ou d'une bourse étudiante). Code à transmettre au club avant le 31 décembre 2026.",
+    lien: "https://www.pass.sports.gouv.fr",
+    finLe: "2027-01-01"
+  },
+
   /* LE CLUB EN IMAGES — déposer les fichiers dans le dossier medias/ puis ajouter une ligne.
      Photos : { fichier: "medias/salut.jpg", legende: "Le salut en début de cours" }
      Vidéos : { fichier: "medias/kata.mp4", titre: "..." }  ou  { youtube: "https://youtu.be/XXXX", titre: "..." }
