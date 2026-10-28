@@ -5,6 +5,25 @@
    ========================================================= */
 window.CONTENU = {
 
+  /* ANNONCE ÉPHÉMÈRE — bandeau en haut du site.
+     Elle s'affiche jusqu'à la veille de "finLe" (AAAA-MM-JJ), puis disparaît toute seule.
+     Pour la retirer avant : mettre annonce: null */
+  annonce: {
+    texte: "Reprise des cours le mardi 3 novembre à 18h. Inscriptions tout au long de l'année.",
+    lien: "#inscription",
+    lienTexte: "S'inscrire",
+    finLe: "2026-11-05"
+  },
+
+  /* LE CLUB EN IMAGES — déposer les fichiers dans le dossier medias/ puis ajouter une ligne.
+     Photos : { fichier: "medias/salut.jpg", legende: "Le salut en début de cours" }
+     Vidéos : { fichier: "medias/kata.mp4", titre: "..." }  ou  { youtube: "https://youtu.be/XXXX", titre: "..." }
+     Règle du club : enfants de dos ou avec l'accord des parents, jamais de nom d'enfant. */
+  galerie: {
+    photos: [],
+    videos: []
+  },
+
   /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
      On ne publie QUE la ligne de Julie, jamais celle des autres athlètes. */
   competition: {

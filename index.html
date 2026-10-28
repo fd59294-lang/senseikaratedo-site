@@ -226,6 +226,26 @@
   footer{border-top:1px solid var(--line);padding:2.5rem 0;color:var(--grey);font-size:.95rem}
   footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
   footer a{font-weight:700;color:var(--sumi)}
+  footer .soc{display:flex;gap:1.2rem;flex-wrap:wrap}
+
+  /* Annonce éphémère */
+  .annonce{background:var(--hi-ink);color:#fff;padding:.75rem 0;font-weight:700}
+  .annonce .wrap{display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
+  .annonce a{color:#fff;border:1.5px solid #fff;border-radius:999px;padding:.25rem .9rem;text-decoration:none;font-size:.95rem}
+  .annonce a:hover{background:#fff;color:var(--hi-ink)}
+
+  /* Le club en images */
+  .images{background:var(--wash)}
+  .images h3.sub{margin:2.5rem 0 1rem;font-size:1.35rem}
+  .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:0;padding:0;list-style:none}
+  .photos figure{margin:0;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .photos img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .photos figcaption{padding:.6rem .8rem;font-size:.92rem;color:var(--grey)}
+  .videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+  .videos figure{margin:0}
+  .videos video,.videos iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000;display:block}
+  .videos figcaption{padding:.5rem 0;font-size:.95rem;font-weight:500}
+  .soc-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
 </style>
 </head>
 <body>
@@ -240,12 +260,15 @@
         <li><a href="#apprendre">Apprendre</a></li>
         <li><a href="#competition">Compétition</a></li>
         <li><a href="#club">Le club</a></li>
+        <li><a href="#images">Images</a></li>
         <li><a href="#inscription">Inscription</a></li>
         <li><a href="#essai" class="btn small">Essai gratuit</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
+<div class="annonce" id="annonce" role="status" hidden><div class="wrap"><span id="annonce-txt"></span><a id="annonce-lien" href="#inscription" hidden></a></div></div>
 
 <main id="top">
   <section class="hero" aria-labelledby="titre">
@@ -366,6 +389,19 @@
     </div>
   </section>
 
+  <section id="images" class="images" aria-labelledby="t-images">
+    <div class="wrap">
+      <h2 id="t-images">Le club en images</h2>
+      <p class="soon" id="images-vide">Les photos et vidéos du dojo arrivent bientôt. En attendant, suivez la vie du club sur nos réseaux.</p>
+      <div id="photos-wrap" hidden><h3 class="sub">Photos</h3><ul class="photos" id="photos"></ul></div>
+      <div id="videos-wrap" hidden><h3 class="sub">Vidéos</h3><div class="videos" id="videos"></div></div>
+      <div class="soc-links">
+        <a class="dl" href="https://www.facebook.com/share/1EfuuKDL6k/" rel="noopener" target="_blank">Facebook</a>
+        <a class="dl" href="https://www.instagram.com/club_sensei_karate_do/" rel="noopener" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </section>
+
   <section class="hymne" aria-labelledby="t-hymne">
     <div class="wrap">
       <div class="disc" aria-hidden="true"><img src="logo.png" alt=""></div>
@@ -409,6 +445,8 @@
             <li><span>Téléphone</span><span><a href="tel:+33749166370">07 49 16 63 70</a></span></li>
             <li><span>WhatsApp</span><span><a href="https://wa.me/33749166370" rel="noopener">07 49 16 63 70</a></span></li>
             <li><span>E-mail</span><span><a href="mailto:contact@senseikaratedo.fr">contact@senseikaratedo.fr</a></span></li>
+            <li><span>Facebook</span><span><a href="https://www.facebook.com/share/1EfuuKDL6k/" rel="noopener" target="_blank">Sensei Karaté Do</a></span></li>
+            <li><span>Instagram</span><span><a href="https://www.instagram.com/club_sensei_karate_do/" rel="noopener" target="_blank">@club_sensei_karate_do</a></span></li>
           </ul>
         </div>
         <div>
@@ -448,7 +486,7 @@
 <footer>
   <div class="wrap">
     <span>Sensei Karaté Do · Médiathèque, 2 rue Victor Hugo, 59294 Haussy · FFKaraté n° 0590861 · 07 49 16 63 70</span>
-    <a href="https://www.facebook.com/share/1EfuuKDL6k/" rel="noopener">Suivre le club sur Facebook</a>
+    <span class="soc"><a href="https://www.facebook.com/share/1EfuuKDL6k/" rel="noopener" target="_blank">Facebook</a><a href="https://www.instagram.com/club_sensei_karate_do/" rel="noopener" target="_blank">Instagram</a></span>
   </div>
 </footer>
 
@@ -456,6 +494,36 @@
 
 <script>
 
+  /* Annonce éphémère : visible jusqu'à la veille de finLe (date locale) */
+  (function(){
+    const a = (window.CONTENU || {}).annonce; if (!a || !a.texte) return;
+    const d = new Date(), auj = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (a.finLe && auj >= a.finLe) return;
+    document.getElementById('annonce-txt').textContent = a.texte;
+    if (a.lien && a.lienTexte) { const l = document.getElementById('annonce-lien'); l.href = a.lien; l.textContent = a.lienTexte; l.hidden = false; }
+    document.getElementById('annonce').hidden = false;
+  })();
+
+  /* Le club en images */
+  (function(){
+    const g = (window.CONTENU || {}).galerie; if (!g) return;
+    const esc = t => String(t || '').replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
+    const photos = g.photos || [], videos = g.videos || [];
+    if (photos.length) {
+      document.getElementById('photos').innerHTML = photos.map(p =>
+        `<li><figure><img src="${esc(p.fichier)}" alt="${esc(p.legende)}" loading="lazy">${p.legende ? `<figcaption>${esc(p.legende)}</figcaption>` : ''}</figure></li>`).join('');
+      document.getElementById('photos-wrap').hidden = false;
+    }
+    const ytId = u => { const m = String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : null; };
+    const html = videos.map(v => {
+      if (v.youtube) { const id = ytId(v.youtube); if (!id) return '';
+        return `<figure><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${esc(v.titre)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>${v.titre ? `<figcaption>${esc(v.titre)}</figcaption>` : ''}</figure>`; }
+      if (v.fichier) return `<figure><video src="${esc(v.fichier)}" controls preload="metadata" playsinline></video>${v.titre ? `<figcaption>${esc(v.titre)}</figcaption>` : ''}</figure>`;
+      return '';
+    }).join('');
+    if (html) { document.getElementById('videos').innerHTML = html; document.getElementById('videos-wrap').hidden = false; }
+    if (photos.length || html) document.getElementById('images-vide').hidden = true;
+  })();
 
   /* Compétition */
   (function(){
