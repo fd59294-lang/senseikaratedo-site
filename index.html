@@ -15,7 +15,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="Sensei Karaté Do · Karaté à Haussy">
 <meta property="og:description" content="Enfants dès 7 ans, ados, adultes. Cours d'essai gratuit.">
-<meta property="og:image" content="https://senseikaratedo.fr/logo.png">
+<meta property="og:image" content="https://senseikaratedo.fr/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sensei Karaté Do, karaté à Haussy dès 7 ans, cours d'essai gratuit">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -236,6 +240,24 @@
   .annonce a{color:#fff;border:1.5px solid #fff;border-radius:999px;padding:.25rem .9rem;text-decoration:none;font-size:.95rem}
   .annonce a:hover{background:#fff;color:var(--hi-ink)}
 
+  /* Actu de la semaine */
+  .actu{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line)}
+  .actu .box{display:grid;grid-template-columns:auto 1fr;gap:1.5rem 2.5rem;align-items:start}
+  .actu .k{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hi-ink);font-weight:700}
+  .actu h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:.3rem 0 0}
+  .actu .d{color:var(--grey);font-size:.95rem;margin-top:.4rem}
+  .actu p.t{margin:0;font-size:1.1rem;max-width:64ch}
+  @media (max-width:760px){.actu .box{grid-template-columns:1fr}}
+
+  /* Prochaine compétition */
+  .next{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;background:var(--sumi);color:#fff;border-radius:14px;padding:1.1rem 1.4rem;margin:2.2rem 0 0}
+  .next .k{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:#ffb3ad;font-weight:700}
+  .next .n{font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1.2}
+  .next .m{color:#d6d6d6;font-size:.95rem}
+  .next .j{margin-left:auto;font-family:var(--display);font-weight:800;font-size:1.6rem;white-space:nowrap}
+  .rgpd{font-size:.82rem;color:var(--grey);margin:0}
+  .rgpd a{font-weight:700}
+
   /* Le club en images */
   .images{background:var(--wash)}
   .images h3.sub{margin:2.5rem 0 1rem;font-size:1.35rem}
@@ -283,6 +305,13 @@
         <p class="meta">Club affilié à la FFKaraté · n° 0590861</p>
       </div>
       <img class="logo" src="logo.png" alt="Logo Sensei Karaté Do : un bonsaï devant un soleil rouge dans un cercle d'encre" width="400" height="400">
+    </div>
+  </section>
+
+  <section class="actu" id="actu" aria-labelledby="t-actu" hidden>
+    <div class="wrap box">
+      <div><span class="k">Cette semaine au dojo</span><h2 id="t-actu"></h2><p class="d" id="actu-date"></p></div>
+      <p class="t" id="actu-texte"></p>
     </div>
   </section>
 
@@ -364,6 +393,7 @@
       <p class="lead2" id="compet-intro"></p>
       <ol class="ranks" id="ranks"></ol>
       <p class="maj" id="compet-maj"></p>
+      <div class="next" id="next" hidden></div>
       <div id="palm-wrap" hidden>
         <h3 class="sub">Résultats</h3>
         <ul class="palm" id="palm"></ul>
@@ -477,6 +507,7 @@
             </div>
             <label>Un mot ? <span class="note">Facultatif</span><textarea name="message" rows="3"></textarea></label>
             <button class="btn" type="submit">Demander mon cours d'essai</button>
+            <p class="rgpd">Vos coordonnées servent uniquement à vous recontacter pour le cours d'essai. Elles ne sont ni cédées ni utilisées pour de la publicité. <a href="mentions-legales.html#donnees">Vos données</a></p>
             <p id="merci" role="status">Demande envoyée. On vous rappelle très vite pour fixer le jour.</p>
           </form>
         </div>
@@ -488,7 +519,7 @@
 <footer>
   <div class="wrap">
     <span>Sensei Karaté Do · Médiathèque, 2 rue Victor Hugo, 59294 Haussy · FFKaraté n° 0590861 · 07 49 16 63 70</span>
-    <span class="soc"><a href="https://www.facebook.com/profile.php?id=100091199344850" rel="noopener" target="_blank">Facebook</a><a href="https://www.instagram.com/club_sensei_karate_do/" rel="noopener" target="_blank">Instagram</a></span>
+    <span class="soc"><a href="https://www.facebook.com/profile.php?id=100091199344850" rel="noopener" target="_blank">Facebook</a><a href="https://www.instagram.com/club_sensei_karate_do/" rel="noopener" target="_blank">Instagram</a><a href="mentions-legales.html">Mentions légales</a></span>
   </div>
 </footer>
 
@@ -504,6 +535,16 @@
     document.getElementById('annonce-txt').textContent = a.texte;
     if (a.lien && a.lienTexte) { const l = document.getElementById('annonce-lien'); l.href = a.lien; l.textContent = a.lienTexte; l.hidden = false; }
     document.getElementById('annonce').hidden = false;
+  })();
+
+  /* Actu de la semaine */
+  (function(){
+    const a = (window.CONTENU || {}).actu; if (!a || !a.texte) return;
+    const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+    document.getElementById('t-actu').textContent = a.titre;
+    if (a.date) document.getElementById('actu-date').textContent = `Semaine du ${Number(a.date.slice(8))} ${mois[Number(a.date.slice(5,7)) - 1]}`;
+    document.getElementById('actu-texte').textContent = a.texte;
+    document.getElementById('actu').hidden = false;
   })();
 
   /* Pass'Sport : visible jusqu'à la veille de finLe */
@@ -556,7 +597,15 @@
       document.getElementById('palm-wrap').hidden = false;
     }
     const auj = new Date().toISOString().slice(0,10);
-    const a_venir = c.calendrier.filter(e => (e.fin || e.date) >= auj);
+    const a_venir = c.calendrier.filter(e => (e.fin || e.date) >= auj).sort((x, y) => x.date.localeCompare(y.date));
+    if (a_venir.length) {
+      const e = a_venir[0];
+      const j = Math.round((Date.parse(e.date + 'T00:00:00') - Date.parse(auj + 'T00:00:00')) / 864e5);
+      const dans = j <= 0 ? 'En cours' : j === 1 ? 'Demain' : `J-${j}`;
+      const n = document.getElementById('next');
+      n.innerHTML = `<div><div class="k">Prochaine compétition kata</div><div class="n">${esc(e.nom)}</div><div class="m">${quand(e)} ${an(e.date)} · ${esc(e.lieu)} · ${esc(e.niveau)}</div></div><div class="j">${dans}</div>`;
+      n.hidden = false;
+    }
     document.getElementById('cal').innerHTML = a_venir.map(e =>
       `<li><span class="d">${quand(e)} ${an(e.date)}</span><span class="n">${esc(e.nom)}<span>${esc(e.lieu)}</span></span><span class="lv">${esc(e.niveau)}</span></li>`).join('')
       || '<li>Le calendrier de la prochaine saison arrive bientôt.</li>';

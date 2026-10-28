@@ -15,6 +15,14 @@ window.CONTENU = {
     finLe: "2026-11-05"
   },
 
+  /* ACTU DE LA SEMAINE — mise à jour chaque lundi (même thème que le post Facebook).
+     date = lundi de la semaine (AAAA-MM-JJ). Pour la masquer : actu: null */
+  actu: {
+    date: "2026-11-02",
+    titre: "Le salut",
+    texte: "Ce mois-ci, nos ceintures blanches découvrent le premier geste du karaté : le salut. Debout (ritsu-rei), talons joints, mains le long des cuisses, on s'incline sans quitter l'autre des yeux. À genoux (za-rei), depuis seiza, dos droit. On salue en entrant au dojo, au début et à la fin du cours, devant chaque partenaire. Jamais à la va-vite : c'est là que commence le respect."
+  },
+
   /* PASS'SPORT — encart dans les tarifs, masqué tout seul à partir de "finLe" (lendemain de la date limite).
      Saison suivante : mettre à jour le texte et la date (vérifier sur pass.sports.gouv.fr). */
   passSport: {
