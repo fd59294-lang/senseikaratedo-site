@@ -53,8 +53,8 @@ window.CONTENU = {
     ],
     /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
     palmares: [
-      { date: "2026-10-18", competition: "Championnat départemental Nord", lieu: "Nord (59)", place: "2e", categorie: "Juniors F" },
-      { date: "2026-10-18", competition: "Championnat départemental Nord", lieu: "Nord (59)", place: "3e", categorie: "Seniors F" }
+      { date: "2026-10-18", competition: "Championnat départemental Nord kata", lieu: "Sin-le-Noble (59)", place: "2e", categorie: "Juniors F" },
+      { date: "2026-10-18", competition: "Championnat départemental Nord kata", lieu: "Sin-le-Noble (59)", place: "3e", categorie: "Seniors F" }
     ],
     /* Calendrier kata de la saison (pas forcément les inscriptions de Julie) */
     calendrier: [
