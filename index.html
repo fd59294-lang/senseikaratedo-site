@@ -187,6 +187,12 @@
   .cal .n{font-weight:500}
   .cal .n span{display:block;color:var(--grey);font-size:.92rem;font-weight:400}
   .cal .lv{font-size:.85rem;color:var(--grey);text-align:right}
+  .cal .lv .stars{display:block;margin-top:.3rem;white-space:nowrap}
+  .cal .lv svg{width:18px;height:18px;vertical-align:middle;margin-left:1px}
+  .cal .q,.legend .q{display:inline-block;font-size:.78rem;font-weight:700;color:#0055A4;border:1.5px solid #0055A4;border-radius:999px;padding:.05rem .55rem;margin-top:.35rem}
+  .cal .n span.q{display:inline-block;color:#0055A4;font-size:.78rem;font-weight:700}
+  .legend{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin:1rem 0 0;font-size:.9rem;color:var(--grey);align-items:center}
+  .legend svg{width:16px;height:16px;vertical-align:-2px}
   .compet h3.sub{margin-top:3rem;font-size:1.35rem}
   .palm{list-style:none;padding:0;margin:1rem 0 0}
   .palm li{padding:.6rem 0;border-bottom:1px solid var(--line)}
@@ -399,6 +405,7 @@
         <ul class="palm" id="palm"></ul>
       </div>
       <h3 class="sub">Le calendrier kata de la saison</h3>
+      <p class="legend" id="legend"></p>
       <ul class="cal" id="cal"></ul>
     </div>
   </section>
@@ -606,8 +613,25 @@
       n.innerHTML = `<div><div class="k">Prochaine compétition kata</div><div class="n">${esc(e.nom)}</div><div class="m">${quand(e)} ${an(e.date)} · ${esc(e.lieu)} · ${esc(e.niveau)}</div></div><div class="j">${dans}</div>`;
       n.hidden = false;
     }
+    const ETOILE = 'M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z';
+    const etoile = (fill, contour) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ETOILE}" fill="${fill}" stroke="${contour}" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+    const tricolore = () => `<svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="tri"><stop offset="0" stop-color="#0055A4"/><stop offset=".333" stop-color="#0055A4"/><stop offset=".333" stop-color="#FFFFFF"/><stop offset=".667" stop-color="#FFFFFF"/><stop offset=".667" stop-color="#EF4135"/><stop offset="1" stop-color="#EF4135"/></linearGradient></defs><path d="${ETOILE}" fill="url(#tri)" stroke="#1F2A44" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+    const etoiles = e => {
+      const n = Math.max(0, Math.min(5, Number(e.etoiles) || 0)); if (!n) return '';
+      let h = '';
+      for (let i = 0; i < 5; i++) {
+        if (i >= n) { h += etoile('none', '#BDB9B2'); continue; }
+        h += e.type === 'inter' ? etoile('#D4A017', '#A87C0C') : tricolore();
+      }
+      return `<span class="stars" role="img" aria-label="${n} étoile${n > 1 ? 's' : ''} sur 5">${h}</span>`;
+    };
+    document.getElementById('legend').innerHTML =
+      `<span>${etoile('#D4A017','#A87C0C')} Compétition internationale</span>` +
+      `<span>${tricolore()} Compétition française</span>` +
+      `<span><span class="q">Qualificatif</span> obligatoire pour le Championnat de France</span>` +
+      `<span>1 à 5 étoiles : valeur de la compétition</span>`;
     document.getElementById('cal').innerHTML = a_venir.map(e =>
-      `<li><span class="d">${quand(e)} ${an(e.date)}</span><span class="n">${esc(e.nom)}<span>${esc(e.lieu)}</span></span><span class="lv">${esc(e.niveau)}</span></li>`).join('')
+      `<li><span class="d">${quand(e)} ${an(e.date)}</span><span class="n">${esc(e.nom)}<span>${esc(e.lieu)}</span>${e.type === 'qualif' ? '<span class="q">Qualificatif</span>' : ''}</span><span class="lv">${esc(e.niveau)}${etoiles(e)}</span></li>`).join('')
       || '<li>Le calendrier de la prochaine saison arrive bientôt.</li>';
   })();
 

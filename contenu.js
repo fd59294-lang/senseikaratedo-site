@@ -56,16 +56,19 @@ window.CONTENU = {
       { date: "2026-10-18", competition: "Championnat départemental Nord kata", lieu: "Sin-le-Noble (59)", place: "2e", categorie: "Juniors F" },
       { date: "2026-10-18", competition: "Championnat départemental Nord kata", lieu: "Sin-le-Noble (59)", place: "3e", categorie: "Seniors F" }
     ],
-    /* Calendrier kata de la saison (pas forcément les inscriptions de Julie) */
+    /* Calendrier kata de la saison (pas forcément les inscriptions de Julie).
+       etoiles : 1 à 5, valeur de la compétition (barème du bot d'inscriptions).
+       type : "qualif" = parcours obligatoire vers le Championnat de France (départemental, régional, France),
+              "france" = autre compétition française, "inter" = compétition internationale. */
     calendrier: [
-      { date: "2026-11-07", fin: "",           nom: "Samoerai Leuven Open",                 lieu: "Louvain (Belgique)",            niveau: "Open international" },
-      { date: "2026-11-28", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional" },
-      { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" },
-      { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF" },
-      { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international" },
-      { date: "2027-02-05", fin: "",           nom: "Championnats d'Europe cadets, juniors, U21", lieu: "Erevan (Arménie)",        niveau: "EKF" },
-      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international" },
-      { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection" }
+      { date: "2026-11-07", fin: "",           nom: "Samoerai Leuven Open",                 lieu: "Louvain (Belgique)",            niveau: "Open international", etoiles: 2, type: "inter" },
+      { date: "2026-11-28", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional", etoiles: 2, type: "qualif" },
+      { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 3, type: "qualif" },
+      { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF", etoiles: 4, type: "inter" },
+      { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international", etoiles: 1, type: "inter" },
+      { date: "2027-02-05", fin: "",           nom: "Championnats d'Europe cadets, juniors, U21", lieu: "Erevan (Arménie)",        niveau: "EKF", etoiles: 5, type: "inter" },
+      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international", etoiles: 2, type: "inter" },
+      { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 2, type: "france" }
     ]
   },
 
