@@ -104,6 +104,7 @@ window.CONTENU = {
   lexique: [
     { jp: "Rei",         dire: "rèï",          sens: "Salut. On salue en entrant et en sortant du dojo." },
     { jp: "Ritsu-rei",   dire: "ri-tsou-rèï",  sens: "Le salut debout, talons joints, mains le long des cuisses." },
+    { jp: "Za-rei",      dire: "za-rèï",       sens: "Le salut à genoux, depuis seiza, dos droit." },
     { jp: "Oss",         dire: "oss",          sens: "J'ai compris, je suis prêt. Marque l'engagement." },
     { jp: "Sensei",      dire: "sèn-sèï",      sens: "Professeur, celui qui est né avant." },
     { jp: "Senpai",      dire: "sèn-païe",     sens: "Élève plus ancien, qui montre l'exemple." },
