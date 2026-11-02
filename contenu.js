@@ -5,6 +5,18 @@
    ========================================================= */
 window.CONTENU = {
 
+  /* BOUTIQUE DU CLUB
+     Pour ajouter un article : copier une ligne d'articles et changer le texte.
+     image = chemin d'une photo dans medias/ (laisser "" tant qu'il n'y a pas de photo).
+     tailles = liste des tailles proposées ([] = taille unique). dispo: false pour le masquer. */
+  boutique: {
+    paypalMe: "",          /* nom PayPal.me du club, ex. "SenseiKarateDo" : active le bouton PayPal */
+    retrait: "Les articles sont à retirer au dojo, aux heures de cours.",
+    articles: [
+      { id: "casquette-blanche", nom: "Casquette blanche Sensei Karaté Do", prix: 10, description: "Casquette blanche brodée au nom du club.", tailles: [], image: "", dispo: true }
+    ]
+  },
+
   /* ANNONCE ÉPHÉMÈRE — bandeau en haut du site.
      Elle s'affiche jusqu'à la veille de "finLe" (AAAA-MM-JJ), puis disparaît toute seule.
      Pour la retirer avant : mettre annonce: null */

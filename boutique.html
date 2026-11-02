@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boutique du club · Sensei Karaté Do</title>
+<meta name="description" content="Les articles du club Sensei Karaté Do (Haussy) : casquettes et bientôt d'autres. Commande en ligne, retrait au dojo.">
+<link rel="canonical" href="https://senseikaratedo.fr/boutique.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="Boutique du club · Sensei Karaté Do">
+<meta property="og:image" content="https://senseikaratedo.fr/partage.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--sumi:#000;--hi:#E8392E;--hi-ink:#B4231A;--paper:#fff;--wash:#F0F0EE;--grey:#55534F;--line:#D8D6D2;
+    --display:"Shippori Mincho B1",Georgia,serif;--body:"Zen Kaku Gothic New","Segoe UI",system-ui,sans-serif}
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;background:var(--paper);color:var(--sumi);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--hi);outline-offset:3px;border-radius:2px}
+  .wrap{width:min(1000px,100% - 2.5rem);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.15;margin:0}
+  header.top{border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.1rem}
+  .brand img{width:44px;height:44px}
+  .back{font-weight:700;text-decoration:none}
+  .btn{display:inline-block;background:var(--sumi);color:#fff;text-decoration:none;border:0;border-radius:999px;padding:.8rem 1.4rem;font:700 1rem var(--body);cursor:pointer}
+  .btn:hover{background:var(--hi-ink)}
+  .btn[disabled]{opacity:.35;cursor:not-allowed;background:var(--sumi)}
+  .btn.ghost{background:transparent;color:var(--sumi);border:1.5px solid var(--sumi)}
+  .btn.paypal{background:#FFC439;color:#111}
+  .btn.paypal:hover{background:#F2B52E}
+  main{padding:clamp(2.5rem,6vw,4rem) 0 4rem}
+  h1{font-size:clamp(2.2rem,6vw,3.4rem)}
+  .intro{color:var(--grey);font-size:1.1rem;margin:.8rem 0 0;max-width:60ch}
+  .layout{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem;margin-top:2.5rem;align-items:start}
+  @media (max-width:820px){.layout{grid-template-columns:1fr}}
+  .articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+  .art{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+  .art .img{aspect-ratio:1;background:var(--wash);display:grid;place-items:center;position:relative}
+  .art .img img.photo{width:100%;height:100%;object-fit:cover}
+  .art .img .ph{width:46%;opacity:.9}
+  .art .img .soon{position:absolute;bottom:.7rem;left:0;right:0;text-align:center;font-size:.85rem;color:var(--grey)}
+  .art .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .art h3{font-size:1.2rem}
+  .art .prix{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--hi-ink)}
+  .art p{margin:0;color:var(--grey);font-size:.95rem}
+  .qte{display:flex;align-items:center;gap:.6rem;margin-top:auto;padding-top:.4rem}
+  .qte button{width:2.4rem;height:2.4rem;border-radius:50%;border:1.5px solid var(--sumi);background:#fff;font:700 1.2rem var(--body);cursor:pointer}
+  .qte output{min-width:1.6rem;text-align:center;font-weight:700;font-size:1.1rem}
+  select{font:inherit;padding:.5rem .7rem;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+  .panier{position:sticky;top:1rem;border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.3rem 1.5rem;background:#fff}
+  .panier h2{font-size:1.4rem;margin-bottom:.8rem}
+  .lignes{list-style:none;padding:0;margin:0 0 .8rem;border-top:1px solid var(--line)}
+  .lignes li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.97rem}
+  .lignes li span:last-child{white-space:nowrap}
+  .total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;margin:.4rem 0 1.2rem}
+  .vide{color:var(--grey);font-size:.95rem}
+  form{display:grid;gap:.8rem}
+  label{font-weight:700;display:grid;gap:.3rem;font-size:.95rem}
+  input,textarea{font:inherit;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;width:100%}
+  input:focus,textarea:focus{border-color:var(--sumi);outline:none}
+  .note{font-size:.88rem;color:var(--grey);font-weight:400}
+  .err{color:var(--hi-ink);font-weight:700;font-size:.95rem}
+  /* Bordereau */
+  .bordereau{border:2px solid var(--sumi);border-radius:14px;padding:clamp(1.3rem,4vw,2.2rem);margin-top:2.5rem;max-width:720px}
+  .bordereau .entete{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1rem}
+  .bordereau .entete img{width:64px;height:64px}
+  .bordereau h2{font-size:1.6rem}
+  .num{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--hi-ink)}
+  table{width:100%;border-collapse:collapse;margin:1rem 0}
+  th,td{text-align:left;padding:.55rem .4rem;border-bottom:1px solid var(--line)}
+  th:last-child,td:last-child,th:nth-child(3),td:nth-child(3),th:nth-child(2),td:nth-child(2){text-align:right}
+  tfoot td{font-weight:700;font-size:1.1rem;border-bottom:0}
+  .payer{display:grid;gap:1rem;margin-top:1.2rem}
+  .payer .bloc{border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+  .payer h3{font-size:1.1rem;margin-bottom:.4rem}
+  .payer p{margin:.2rem 0 .7rem}
+  .actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}
+  footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--grey);font-size:.92rem}
+  @media print{
+    header.top,footer,.layout,.intro,h1,.actions,.noprint{display:none!important}
+    main{padding:0}.bordereau{border:0;margin:0;max-width:none}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="logo.png" alt="" width="44" height="44">Sensei Karaté Do</a>
+    <a class="back" href="./">Retour au site</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>La boutique du club</h1>
+  <p class="intro" id="intro"></p>
+
+  <div class="layout" id="choix">
+    <section aria-labelledby="t-articles">
+      <h2 id="t-articles" hidden>Articles</h2>
+      <div class="articles" id="articles"></div>
+    </section>
+
+    <aside class="panier" aria-labelledby="t-panier">
+      <h2 id="t-panier">Ma commande</h2>
+      <ul class="lignes" id="lignes"></ul>
+      <p class="vide" id="vide">Choisissez un article avec le bouton +.</p>
+      <div class="total" id="total-l" hidden><span>Total</span><span id="total">0 €</span></div>
+      <form id="form" novalidate>
+        <label>Nom et prénom<input name="nom" required autocomplete="name"></label>
+        <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Un mot ? <span class="note">Facultatif, par exemple le nom de l'adhérent</span><textarea name="message" rows="2"></textarea></label>
+        <p class="err" id="err" role="alert" hidden></p>
+        <button class="btn" type="submit" id="valider" disabled>Valider la commande</button>
+        <p class="note" id="retrait"></p>
+      </form>
+    </aside>
+  </div>
+
+  <section class="bordereau" id="bordereau" hidden aria-labelledby="t-bordereau" tabindex="-1">
+    <div class="entete">
+      <div>
+        <h2 id="t-bordereau">Bordereau de commande</h2>
+        <div class="num" id="b-num"></div>
+        <div class="note" id="b-date"></div>
+      </div>
+      <img src="logo.png" alt="Sensei Karaté Do">
+    </div>
+    <div id="b-client"></div>
+    <table>
+      <thead><tr><th>Article</th><th>Qté</th><th>Prix</th><th>Total</th></tr></thead>
+      <tbody id="b-lignes"></tbody>
+      <tfoot><tr><td colspan="3">Total à régler</td><td id="b-total"></td></tr></tfoot>
+    </table>
+    <p class="note" id="b-envoi"></p>
+    <div class="payer">
+      <div class="bloc" id="b-paypal" hidden>
+        <h3>Payer en ligne avec PayPal</h3>
+        <p>Indiquez le numéro de commande <strong class="b-num2"></strong> dans le message du paiement.</p>
+        <a class="btn paypal" id="b-paypal-lien" href="#" rel="noopener" target="_blank">Payer <span class="b-total2"></span> avec PayPal</a>
+      </div>
+      <div class="bloc">
+        <h3 id="b-dojo-titre">Ou payer au dojo</h3>
+        <p>En espèces, ou par chèque à l'ordre de « Sensei Karaté Do », en rappelant le numéro <strong class="b-num2"></strong>.</p>
+      </div>
+    </div>
+    <p class="note" id="b-retrait"></p>
+    <div class="actions">
+      <button class="btn ghost" type="button" onclick="window.print()">Imprimer le bordereau</button>
+      <a class="btn ghost" href="boutique.html">Nouvelle commande</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Sensei Karaté Do · Médiathèque, 2 rue Victor Hugo, 59294 Haussy · 07 49 16 63 70 · <a href="mailto:contact@senseikaratedo.fr">contact@senseikaratedo.fr</a> · <a href="mentions-legales.html">Mentions légales</a></div>
+</footer>
+
+<script src="contenu.js"></script>
+<script>
+(function(){
+  const B = (window.CONTENU || {}).boutique || {articles: []};
+  const FORMSPREE = 'https://formspree.io/f/meaaknjg';
+  const esc = t => String(t).replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
+  const euros = n => (Math.round(n * 100) / 100).toLocaleString('fr-FR', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
+  const articles = B.articles.filter(a => a.dispo !== false);
+  const panier = {}; // clé "id|taille" -> quantité
+
+  const regler = B.paypalMe ? 'à régler par PayPal ou au dojo' : 'à régler au dojo';
+  document.getElementById('intro').textContent = (articles.length > 1
+    ? 'Les articles du club. ' : 'Premier article du club, d\'autres arrivent bientôt. ')
+    + `Choisissez, validez : vous recevez un bordereau de commande ${regler}.`;
+  document.getElementById('retrait').textContent = B.retrait || '';
+
+  document.getElementById('articles').innerHTML = articles.map(a => `
+    <article class="art">
+      <div class="img">${a.image ? `<img class="photo" src="${esc(a.image)}" alt="${esc(a.nom)}">` : `<img class="ph" src="logo.png" alt=""><span class="soon">Photo à venir</span>`}</div>
+      <div class="body">
+        <h3>${esc(a.nom)}</h3>
+        <div class="prix">${euros(a.prix)}</div>
+        <p>${esc(a.description || '')}</p>
+        ${a.tailles && a.tailles.length ? `<label class="note">Taille <select data-taille="${esc(a.id)}">${a.tailles.map(t => `<option>${esc(t)}</option>`).join('')}</select></label>` : '<p class="note">Taille unique</p>'}
+        <div class="qte" data-id="${esc(a.id)}">
+          <button type="button" data-d="-1" aria-label="Retirer un article">−</button>
+          <output aria-live="polite">0</output>
+          <button type="button" data-d="1" aria-label="Ajouter un article">+</button>
+        </div>
+      </div>
+    </article>`).join('');
+
+  const taille = id => { const s = document.querySelector(`select[data-taille="${id}"]`); return s ? s.value : ''; };
+  const lignes = () => Object.entries(panier).filter(([, q]) => q > 0).map(([k, q]) => {
+    const [id, t] = k.split('|'); const a = articles.find(x => x.id === id);
+    return {nom: a.nom + (t ? ` (taille ${t})` : ''), prix: a.prix, q, total: a.prix * q};
+  });
+  const total = () => lignes().reduce((s, l) => s + l.total, 0);
+
+  function rafraichir(){
+    const L = lignes();
+    document.getElementById('lignes').innerHTML = L.map(l => `<li><span>${l.q} × ${esc(l.nom)}</span><span>${euros(l.total)}</span></li>`).join('');
+    document.getElementById('vide').hidden = L.length > 0;
+    document.getElementById('total-l').hidden = L.length === 0;
+    document.getElementById('total').textContent = euros(total());
+    document.getElementById('valider').disabled = L.length === 0;
+    document.querySelectorAll('.qte').forEach(z => {
+      const id = z.dataset.id;
+      z.querySelector('output').textContent = Object.entries(panier).filter(([k]) => k.split('|')[0] === id).reduce((s, [, q]) => s + q, 0);
+    });
+  }
+  document.getElementById('articles').addEventListener('click', e => {
+    const b = e.target.closest('button[data-d]'); if (!b) return;
+    const id = b.closest('.qte').dataset.id, k = id + '|' + taille(id);
+    panier[k] = Math.max(0, Math.min(20, (panier[k] || 0) + Number(b.dataset.d)));
+    if (Number(b.dataset.d) < 0 && panier[k] === 0) { // retirer aussi dans une autre taille si besoin
+      const autre = Object.keys(panier).find(x => x.startsWith(id + '|') && panier[x] > 0); if (autre && autre !== k) panier[autre]--;
+    }
+    rafraichir();
+  });
+
+  document.getElementById('form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const f = e.target, err = document.getElementById('err');
+    err.hidden = true;
+    if (!lignes().length) return;
+    for (const champ of ['nom', 'telephone', 'email']) {
+      if (!f[champ].value.trim() || (champ === 'email' && !f.email.checkValidity())) {
+        err.textContent = champ === 'email' ? 'Indiquez une adresse e-mail valide.' : 'Indiquez votre nom et votre téléphone.';
+        err.hidden = false; f[champ].focus(); return;
+      }
+    }
+    const d = new Date();
+    const num = 'SKD-' + d.toISOString().slice(0, 10).replace(/-/g, '') + '-' + String(Math.floor(1000 + Math.random() * 9000));
+    const L = lignes(), T = total();
+    const detail = L.map(l => `${l.q} x ${l.nom} = ${euros(l.total)}`).join('\n');
+    const btn = document.getElementById('valider'); btn.disabled = true; btn.textContent = 'Envoi…';
+    let envoye = false;
+    try {
+      const data = new FormData();
+      data.append('_subject', `Commande boutique ${num} – ${euros(T)}`);
+      data.append('commande', num); data.append('nom', f.nom.value); data.append('telephone', f.telephone.value);
+      data.append('email', f.email.value); data.append('articles', detail); data.append('total', euros(T));
+      data.append('message', f.message.value);
+      const r = await fetch(FORMSPREE, {method: 'POST', body: data, headers: {Accept: 'application/json'}});
+      envoye = r.ok;
+    } catch (_) {}
+    // Bordereau
+    document.getElementById('b-num').textContent = 'Commande n° ' + num;
+    document.querySelectorAll('.b-num2').forEach(x => x.textContent = num);
+    document.getElementById('b-date').textContent = 'Le ' + d.toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'});
+    document.getElementById('b-client').innerHTML = `<strong>${esc(f.nom.value)}</strong><br>${esc(f.telephone.value)} · ${esc(f.email.value)}${f.message.value ? '<br>' + esc(f.message.value) : ''}`;
+    document.getElementById('b-lignes').innerHTML = L.map(l => `<tr><td>${esc(l.nom)}</td><td>${l.q}</td><td>${euros(l.prix)}</td><td>${euros(l.total)}</td></tr>`).join('');
+    document.getElementById('b-total').textContent = euros(T);
+    document.querySelectorAll('.b-total2').forEach(x => x.textContent = euros(T));
+    document.getElementById('b-envoi').textContent = envoye
+      ? 'Votre commande a bien été envoyée au club. Gardez ce bordereau : imprimez-le ou faites une capture d\'écran.'
+      : 'La commande n\'a pas pu être envoyée automatiquement. Faites une capture de ce bordereau et envoyez-la au 07 49 16 63 70 (WhatsApp) ou à contact@senseikaratedo.fr.';
+    document.getElementById('b-retrait').textContent = B.retrait || '';
+    document.getElementById('b-dojo-titre').textContent = B.paypalMe ? 'Ou payer au dojo' : 'Payer au dojo';
+    if (B.paypalMe) {
+      document.getElementById('b-paypal').hidden = false;
+      document.getElementById('b-paypal-lien').href = `https://www.paypal.me/${encodeURIComponent(B.paypalMe)}/${T.toFixed(2)}EUR`;
+    }
+    document.getElementById('choix').hidden = true;
+    const bd = document.getElementById('bordereau'); bd.hidden = false; bd.focus(); bd.scrollIntoView({behavior: 'smooth'});
+  });
+  rafraichir();
+})();
+</script>
+</body>
+</html>
