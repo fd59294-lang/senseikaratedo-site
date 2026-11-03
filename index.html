@@ -343,18 +343,18 @@
 
   <section id="tarifs" class="tarifs" aria-labelledby="t-tarifs">
     <div class="wrap">
-      <h2 id="t-tarifs">Saison 2026-2027</h2>
+      <h2 id="t-tarifs">Saison <span data-t="saison">2026-2027</span></h2>
       <div class="prices">
         <div class="price">
-          <div class="n">129<small>€</small></div>
-          <p><strong>Enfants de 7 à 12 ans</strong>, cours du mardi. Licence FFKaraté comprise, pour toute la saison.</p>
+          <div class="n"><span data-t="prix-enfant">129</span><small>€</small></div>
+          <p><strong>Enfants de 7 à 12 ans</strong>, cours du mardi. Licence FFKaraté comprise (<span data-t="licence">39</span> € + <span data-t="cotis-enfant">90</span> € de cotisation), pour toute la saison.</p>
         </div>
         <div class="price second">
-          <div class="n">139<small>€</small></div>
-          <p><strong>13 ans et adultes</strong>, cours du samedi. Licence FFKaraté comprise, pour toute la saison.</p>
+          <div class="n"><span data-t="prix-ado-adulte">139</span><small>€</small></div>
+          <p><strong>13 ans et adultes</strong>, cours du samedi. Licence FFKaraté comprise (<span data-t="licence">39</span> € + <span data-t="cotis-ado-adulte">100</span> € de cotisation), pour toute la saison.</p>
         </div>
       </div>
-      <p class="includes">20 € de réduction pour le 2<sup>e</sup> membre d'une même famille. Le premier cours est gratuit et sans engagement : venez en jogging, le kimono viendra après.</p>
+      <p class="includes"><span data-t="reduc">20</span> € de réduction pour le 2<sup>e</sup> membre d'une même famille. Le premier cours est gratuit et sans engagement : venez en jogging, le kimono viendra après.</p>
       <p class="pass" id="pass-sport" hidden></p>
     </div>
   </section>
@@ -471,7 +471,8 @@
           <a class="dl" href="docs/attestation-honneur-mineur.pdf" download>Attestation sur l'honneur <small>à rendre</small></a>
           <p style="margin-top:.8rem"><strong>Adultes :</strong> un certificat médical de non-contre-indication au karaté de moins de 3 ans.</p></div></li>
         <li><div><h3>Compléter le dossier</h3>
-          <p>Une photo d'identité et la cotisation : 129 € (7-12 ans) ou 139 € (13 ans et adultes), 20 € de moins pour le 2<sup>e</sup> membre d'une même famille.</p></div></li>
+          <p>Une photo d'identité et la cotisation : <span data-t="prix-enfant">129</span> € (7-12 ans) ou <span data-t="prix-ado-adulte">139</span> € (13 ans et adultes), <span data-t="reduc">20</span> € de moins pour le 2<sup>e</sup> membre d'une même famille.</p>
+          <a class="dl" href="boutique.html#adhesion">Payer l'adhésion en ligne <small>PayPal ou au dojo</small></a></div></li>
       </ol>
     </div>
   </section>
@@ -585,6 +586,15 @@
     }).join('');
     if (html) { document.getElementById('videos').innerHTML = html; document.getElementById('videos-wrap').hidden = false; }
     if (photos.length || html) document.getElementById('images-vide').hidden = true;
+  })();
+
+
+  /* Tarifs : tout vient de CONTENU.adhesion */
+  (function(){
+    const A = (window.CONTENU || {}).adhesion; if (!A) return;
+    const val = {saison: A.saison, licence: A.licence, reduc: A.reductionFamille};
+    A.formules.forEach(f => { val['prix-' + f.id] = A.licence + f.cotisation; val['cotis-' + f.id] = f.cotisation; });
+    document.querySelectorAll('[data-t]').forEach(el => { if (val[el.dataset.t] !== undefined) el.textContent = val[el.dataset.t]; });
   })();
 
   /* Compétition */

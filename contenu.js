@@ -5,6 +5,25 @@
    ========================================================= */
 window.CONTENU = {
 
+  /* TARIFS DE LA SAISON — LA SEULE SOURCE DES PRIX
+     Chaque année : changer saison, licence et les cotisations ici.
+     Le site (partie Tarifs, Inscription) et la boutique se mettent à jour tout seuls.
+     Prix d'une adhésion = licence FFK + cotisation club. */
+  adhesion: {
+    saison: "2026-2027",
+    licence: 39,
+    reductionFamille: 20,   /* réduction par membre à partir du 2e d'une même famille */
+    formules: [
+      { id: "enfant",      libelle: "Enfants de 7 à 12 ans", court: "7-12 ans",         cours: "mardi 18h-19h15", cotisation: 90 },
+      { id: "ado-adulte",  libelle: "13 ans et adultes",     court: "13 ans et adultes", cours: "samedi 14h-16h",  cotisation: 100 }
+    ]
+  },
+
+  /* DON LIBRE AU CLUB (association loi 1901)
+     recuFiscal : true = proposer le reçu fiscal (Cerfa 11580) ; ne le laisser actif
+     que si le club remplit les conditions d'intérêt général. */
+  don: { actif: true, recuFiscal: true, suggestions: [10, 20, 50] },
+
   /* BOUTIQUE DU CLUB
      Pour ajouter un article : copier une ligne d'articles et changer le texte.
      image = chemin d'une photo dans medias/ (laisser "" tant qu'il n'y a pas de photo).

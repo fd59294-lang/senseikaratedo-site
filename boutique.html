@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boutique du club · Sensei Karaté Do</title>
-<meta name="description" content="Les articles du club Sensei Karaté Do (Haussy) : casquettes et bientôt d'autres. Commande en ligne, retrait au dojo.">
+<meta name="description" content="Boutique du club Sensei Karaté Do (Haussy) : adhésion de la saison, articles du club et dons. Paiement PayPal ou au dojo.">
 <link rel="canonical" href="https://senseikaratedo.fr/boutique.html">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:title" content="Boutique du club · Sensei Karaté Do">
@@ -65,6 +65,30 @@
   input:focus,textarea:focus{border-color:var(--sumi);outline:none}
   .note{font-size:.88rem;color:var(--grey);font-weight:400}
   .err{color:var(--hi-ink);font-weight:700;font-size:.95rem}
+
+  .bloc-section{margin-bottom:2.2rem}
+  .bloc-section h2{font-size:1.5rem;margin-bottom:.4rem}
+  .bloc-section .note{margin:0 0 1rem}
+  .carte{border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;background:#fff}
+  .formules{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem;margin-bottom:1rem}
+  .formule{display:block;border:1.5px solid var(--line);border-radius:12px;padding:.9rem 1rem;cursor:pointer;font-weight:400}
+  .formule:has(input:checked){border-color:var(--sumi);box-shadow:inset 0 0 0 1px var(--sumi)}
+  .formule input{width:auto;margin-right:.4rem}
+  .formule b{font-family:var(--display);font-size:1.1rem}
+  .formule .px{display:block;font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--hi-ink);margin:.2rem 0}
+  .formule small{color:var(--grey)}
+  .ligne-ajout{display:flex;gap:.7rem;align-items:end;flex-wrap:wrap}
+  .ligne-ajout label{flex:1;min-width:200px}
+  .montants{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+  .montants button{border:1.5px solid var(--sumi);background:#fff;border-radius:999px;padding:.45rem 1rem;font:700 1rem var(--body);cursor:pointer}
+  .montants button[aria-pressed="true"]{background:var(--sumi);color:#fff}
+  .check{display:flex;gap:.6rem;align-items:flex-start;font-weight:700;margin:.9rem 0 .5rem}
+  .check input{width:auto;margin-top:.3rem}
+  .recu{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.6rem}
+  .recu .full{grid-column:1/-1}
+  @media (max-width:560px){.recu{grid-template-columns:1fr}}
+  .lignes li .suppr{border:0;background:none;color:var(--hi-ink);font-weight:700;cursor:pointer;margin-left:.4rem}
+  .lignes li.moins span:last-child{color:var(--hi-ink)}
   /* Bordereau */
   .bordereau{border:2px solid var(--sumi);border-radius:14px;padding:clamp(1.3rem,4vw,2.2rem);margin-top:2.5rem;max-width:720px}
   .bordereau .entete{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1rem}
@@ -100,10 +124,45 @@
   <p class="intro" id="intro"></p>
 
   <div class="layout" id="choix">
-    <section aria-labelledby="t-articles">
-      <h2 id="t-articles" hidden>Articles</h2>
-      <div class="articles" id="articles"></div>
-    </section>
+    <div>
+      <section class="bloc-section" id="adhesion" aria-labelledby="t-adh">
+        <h2 id="t-adh">Adhésion saison <span id="saison"></span></h2>
+        <p class="note">Licence FFKaraté et cotisation du club. Le dossier d'inscription (licence signée, volet santé, photo) reste à remettre au dojo : <a href="./#inscription">documents à télécharger</a>.</p>
+        <div class="carte">
+          <div class="formules" id="formules" role="radiogroup" aria-label="Formule"></div>
+          <div class="ligne-ajout">
+            <label>Nom et prénom de l'adhérent<input id="adh-nom" autocomplete="off"></label>
+            <button class="btn" type="button" id="adh-ajout">Ajouter l'adhésion</button>
+          </div>
+          <p class="note" id="adh-famille" style="margin-top:.8rem"></p>
+        </div>
+      </section>
+
+      <section class="bloc-section" aria-labelledby="t-articles">
+        <h2 id="t-articles">Articles du club</h2>
+        <div class="articles" id="articles"></div>
+      </section>
+
+      <section class="bloc-section" id="don" aria-labelledby="t-don" hidden>
+        <h2 id="t-don">Soutenir le club par un don</h2>
+        <p class="note" id="don-info"></p>
+        <div class="carte">
+          <div class="montants" id="montants"></div>
+          <label>Montant libre (€)<input id="don-montant" type="number" min="1" step="1" inputmode="numeric" placeholder="Ex. 30"></label>
+          <div id="recu-bloc" hidden>
+            <label class="check"><input type="checkbox" id="recu-oui"> Je souhaite un reçu fiscal pour ma déclaration d'impôts</label>
+            <div class="recu" id="recu-champs" hidden>
+              <label>Nom<input id="r-nom" autocomplete="family-name"></label>
+              <label>Prénom<input id="r-prenom" autocomplete="given-name"></label>
+              <label class="full">Adresse<input id="r-adresse" autocomplete="street-address"></label>
+              <label>Code postal<input id="r-cp" autocomplete="postal-code" inputmode="numeric"></label>
+              <label>Ville<input id="r-ville" autocomplete="address-level2"></label>
+              <p class="note full">Ces informations servent uniquement à établir le reçu fiscal (Cerfa n° 11580), envoyé par e-mail par le club.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <aside class="panier" aria-labelledby="t-panier">
       <h2 id="t-panier">Ma commande</h2>
@@ -164,20 +223,40 @@
 <script src="contenu.js"></script>
 <script>
 (function(){
-  const B = (window.CONTENU || {}).boutique || {articles: []};
+  const C = window.CONTENU || {};
+  const B = C.boutique || {articles: []}, A = C.adhesion, D = C.don || {};
   const FORMSPREE = 'https://formspree.io/f/meaaknjg';
+  const $ = id => document.getElementById(id);
   const esc = t => String(t).replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
-  const euros = n => (Math.round(n * 100) / 100).toLocaleString('fr-FR', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
+  const euros = n => (n < 0 ? '−' : '') + (Math.round(Math.abs(n) * 100) / 100).toLocaleString('fr-FR', {minimumFractionDigits: Math.abs(n) % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
   const articles = B.articles.filter(a => a.dispo !== false);
-  const panier = {}; // clé "id|taille" -> quantité
+  const panier = {};        // articles : "id|taille" -> quantité
+  const adhesions = [];     // {formule, nom}
+  let don = 0;
 
-  const regler = B.paypalMe ? 'à régler par PayPal ou au dojo' : 'à régler au dojo';
-  document.getElementById('intro').textContent = (articles.length > 1
-    ? 'Les articles du club. ' : 'Premier article du club, d\'autres arrivent bientôt. ')
-    + `Choisissez, validez : vous recevez un bordereau de commande ${regler}.`;
-  document.getElementById('retrait').textContent = B.retrait || '';
+  $('intro').textContent = `Adhésion de la saison, articles du club et dons. Validez : vous recevez un bordereau de commande ${B.paypalMe ? 'à régler par PayPal ou au dojo' : 'à régler au dojo'}.`;
+  $('retrait').textContent = B.retrait || '';
 
-  document.getElementById('articles').innerHTML = articles.map(a => `
+  /* ----- Adhésion ----- */
+  if (A) {
+    $('saison').textContent = A.saison;
+    $('formules').innerHTML = A.formules.map((f, i) => `
+      <label class="formule"><input type="radio" name="formule" value="${esc(f.id)}"${i ? '' : ' checked'}>
+        <b>${esc(f.libelle)}</b><span class="px">${euros(A.licence + f.cotisation)}</span>
+        <small>Cours le ${esc(f.cours)} · licence ${euros(A.licence)} + cotisation ${euros(f.cotisation)}</small></label>`).join('');
+    $('adh-famille').textContent = `${euros(A.reductionFamille)} de réduction appliqués automatiquement à partir du 2e membre d'une même famille : ajoutez chaque adhérent.`;
+    $('adh-ajout').addEventListener('click', () => {
+      const nom = $('adh-nom').value.trim();
+      if (!nom) { $('adh-nom').focus(); $('adh-nom').setAttribute('aria-invalid', 'true'); return; }
+      $('adh-nom').removeAttribute('aria-invalid');
+      const id = document.querySelector('input[name=formule]:checked').value;
+      adhesions.push({formule: A.formules.find(f => f.id === id), nom});
+      $('adh-nom').value = ''; rafraichir();
+    });
+  } else { $('adhesion').hidden = true; }
+
+  /* ----- Articles ----- */
+  $('articles').innerHTML = articles.map(a => `
     <article class="art">
       <div class="img">${a.image ? `<img class="photo" src="${esc(a.image)}" alt="${esc(a.nom)}">` : `<img class="ph" src="logo.png" alt=""><span class="soon">Photo à venir</span>`}</div>
       <div class="body">
@@ -192,81 +271,122 @@
         </div>
       </div>
     </article>`).join('');
-
-  const taille = id => { const s = document.querySelector(`select[data-taille="${id}"]`); return s ? s.value : ''; };
-  const lignes = () => Object.entries(panier).filter(([, q]) => q > 0).map(([k, q]) => {
-    const [id, t] = k.split('|'); const a = articles.find(x => x.id === id);
-    return {nom: a.nom + (t ? ` (taille ${t})` : ''), prix: a.prix, q, total: a.prix * q};
-  });
-  const total = () => lignes().reduce((s, l) => s + l.total, 0);
-
-  function rafraichir(){
-    const L = lignes();
-    document.getElementById('lignes').innerHTML = L.map(l => `<li><span>${l.q} × ${esc(l.nom)}</span><span>${euros(l.total)}</span></li>`).join('');
-    document.getElementById('vide').hidden = L.length > 0;
-    document.getElementById('total-l').hidden = L.length === 0;
-    document.getElementById('total').textContent = euros(total());
-    document.getElementById('valider').disabled = L.length === 0;
-    document.querySelectorAll('.qte').forEach(z => {
-      const id = z.dataset.id;
-      z.querySelector('output').textContent = Object.entries(panier).filter(([k]) => k.split('|')[0] === id).reduce((s, [, q]) => s + q, 0);
-    });
-  }
-  document.getElementById('articles').addEventListener('click', e => {
+  const taille = id => { const x = document.querySelector(`select[data-taille="${id}"]`); return x ? x.value : ''; };
+  $('articles').addEventListener('click', e => {
     const b = e.target.closest('button[data-d]'); if (!b) return;
     const id = b.closest('.qte').dataset.id, k = id + '|' + taille(id);
     panier[k] = Math.max(0, Math.min(20, (panier[k] || 0) + Number(b.dataset.d)));
-    if (Number(b.dataset.d) < 0 && panier[k] === 0) { // retirer aussi dans une autre taille si besoin
-      const autre = Object.keys(panier).find(x => x.startsWith(id + '|') && panier[x] > 0); if (autre && autre !== k) panier[autre]--;
-    }
     rafraichir();
   });
 
-  document.getElementById('form').addEventListener('submit', async e => {
+  /* ----- Don ----- */
+  if (D.actif) {
+    $('don').hidden = false;
+    $('don-info').textContent = 'Un don libre aide le club (matériel, stages, déplacements). Il ne donne droit à aucune contrepartie.'
+      + (D.recuFiscal ? ' Avec le reçu fiscal, un particulier peut déduire 66 % du don de son impôt sur le revenu, dans la limite de 20 % de son revenu imposable : un don de 30 € coûte ainsi 10,20 €.' : '');
+    $('montants').innerHTML = (D.suggestions || []).map(m => `<button type="button" aria-pressed="false" data-m="${m}">${euros(m)}</button>`).join('');
+    $('montants').addEventListener('click', e => {
+      const b = e.target.closest('button[data-m]'); if (!b) return;
+      const deja = b.getAttribute('aria-pressed') === 'true';
+      $('montants').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      if (!deja) b.setAttribute('aria-pressed', 'true');
+      $('don-montant').value = deja ? '' : b.dataset.m; don = deja ? 0 : Number(b.dataset.m); rafraichir();
+    });
+    $('don-montant').addEventListener('input', e => {
+      $('montants').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(Number(x.dataset.m) === Number(e.target.value))));
+      don = Math.max(0, Math.round(Number(e.target.value) || 0)); rafraichir();
+    });
+    if (D.recuFiscal) {
+      $('recu-bloc').hidden = false;
+      $('recu-oui').addEventListener('change', e => { $('recu-champs').hidden = !e.target.checked; });
+    }
+  }
+
+  /* ----- Panier ----- */
+  function lignes(){
+    const L = [];
+    adhesions.forEach((a, i) => L.push({nom: `Adhésion ${A.saison} · ${a.formule.court} · ${a.nom}`, detail: `licence ${euros(A.licence)} + cotisation ${euros(a.formule.cotisation)}`, prix: A.licence + a.formule.cotisation, q: 1, total: A.licence + a.formule.cotisation, suppr: 'a' + i}));
+    if (adhesions.length > 1) {
+      const n = adhesions.length - 1;
+      L.push({nom: `Réduction famille (${n} membre${n > 1 ? 's' : ''} en plus)`, prix: -A.reductionFamille, q: n, total: -A.reductionFamille * n, moins: true});
+    }
+    Object.entries(panier).filter(([, q]) => q > 0).forEach(([k, q]) => {
+      const [id, t] = k.split('|'); const a = articles.find(x => x.id === id);
+      L.push({nom: a.nom + (t ? ` (taille ${t})` : ''), prix: a.prix, q, total: a.prix * q});
+    });
+    if (don > 0) L.push({nom: 'Don libre au club', prix: don, q: 1, total: don, don: true});
+    return L;
+  }
+  const total = () => lignes().reduce((x, l) => x + l.total, 0);
+  function rafraichir(){
+    const L = lignes();
+    $('lignes').innerHTML = L.map(l => `<li class="${l.moins ? 'moins' : ''}"><span>${l.q > 1 ? l.q + ' × ' : ''}${esc(l.nom)}${l.suppr ? ` <button type="button" class="suppr" data-s="${l.suppr}" aria-label="Retirer">✕</button>` : ''}</span><span>${euros(l.total)}</span></li>`).join('');
+    $('vide').hidden = L.length > 0;
+    $('total-l').hidden = L.length === 0;
+    $('total').textContent = euros(total());
+    $('valider').disabled = L.length === 0 || total() <= 0;
+    document.querySelectorAll('.qte').forEach(z => {
+      const id = z.dataset.id;
+      z.querySelector('output').textContent = Object.entries(panier).filter(([k]) => k.split('|')[0] === id).reduce((x, [, q]) => x + q, 0);
+    });
+  }
+  $('lignes').addEventListener('click', e => {
+    const b = e.target.closest('button[data-s]'); if (!b) return;
+    adhesions.splice(Number(b.dataset.s.slice(1)), 1); rafraichir();
+  });
+
+  /* ----- Validation ----- */
+  $('form').addEventListener('submit', async e => {
     e.preventDefault();
-    const f = e.target, err = document.getElementById('err');
+    const f = e.target, err = $('err');
+    const erreur = (msg, champ) => { err.textContent = msg; err.hidden = false; if (champ) champ.focus(); };
     err.hidden = true;
     if (!lignes().length) return;
-    for (const champ of ['nom', 'telephone', 'email']) {
-      if (!f[champ].value.trim() || (champ === 'email' && !f.email.checkValidity())) {
-        err.textContent = champ === 'email' ? 'Indiquez une adresse e-mail valide.' : 'Indiquez votre nom et votre téléphone.';
-        err.hidden = false; f[champ].focus(); return;
-      }
-    }
+    if (!f.nom.value.trim() || !f.telephone.value.trim()) return erreur('Indiquez votre nom et votre téléphone.', f.nom.value.trim() ? f.telephone : f.nom);
+    if (!f.email.value.trim() || !f.email.checkValidity()) return erreur('Indiquez une adresse e-mail valide.', f.email);
+    const recu = D.recuFiscal && don > 0 && $('recu-oui').checked;
+    if (recu) for (const id of ['r-nom', 'r-prenom', 'r-adresse', 'r-cp', 'r-ville'])
+      if (!$(id).value.trim()) return erreur('Pour le reçu fiscal, indiquez nom, prénom et adresse complète.', $(id));
     const d = new Date();
     const num = 'SKD-' + d.toISOString().slice(0, 10).replace(/-/g, '') + '-' + String(Math.floor(1000 + Math.random() * 9000));
     const L = lignes(), T = total();
-    const detail = L.map(l => `${l.q} x ${l.nom} = ${euros(l.total)}`).join('\n');
-    const btn = document.getElementById('valider'); btn.disabled = true; btn.textContent = 'Envoi…';
+    const detail = L.map(l => `${l.q} x ${l.nom}${l.detail ? ' (' + l.detail + ')' : ''} = ${euros(l.total)}`).join('\n');
+    const btn = $('valider'); btn.disabled = true; btn.textContent = 'Envoi…';
     let envoye = false;
     try {
       const data = new FormData();
-      data.append('_subject', `Commande boutique ${num} – ${euros(T)}`);
+      data.append('_subject', `Commande boutique ${num} – ${euros(T)}${recu ? ' – REÇU FISCAL À ÉTABLIR' : ''}`);
       data.append('commande', num); data.append('nom', f.nom.value); data.append('telephone', f.telephone.value);
-      data.append('email', f.email.value); data.append('articles', detail); data.append('total', euros(T));
+      data.append('email', f.email.value); data.append('lignes', detail); data.append('total', euros(T));
+      if (adhesions.length) data.append('adherents', adhesions.map(a => `${a.nom} (${a.formule.court})`).join(', '));
+      if (don > 0) data.append('don', euros(don));
+      if (recu) data.append('recu_fiscal', `${$('r-prenom').value} ${$('r-nom').value}, ${$('r-adresse').value}, ${$('r-cp').value} ${$('r-ville').value} – don de ${euros(don)} le ${d.toLocaleDateString('fr-FR')}`);
       data.append('message', f.message.value);
       const r = await fetch(FORMSPREE, {method: 'POST', body: data, headers: {Accept: 'application/json'}});
       envoye = r.ok;
     } catch (_) {}
-    // Bordereau
-    document.getElementById('b-num').textContent = 'Commande n° ' + num;
+    $('b-num').textContent = 'Commande n° ' + num;
     document.querySelectorAll('.b-num2').forEach(x => x.textContent = num);
-    document.getElementById('b-date').textContent = 'Le ' + d.toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'});
-    document.getElementById('b-client').innerHTML = `<strong>${esc(f.nom.value)}</strong><br>${esc(f.telephone.value)} · ${esc(f.email.value)}${f.message.value ? '<br>' + esc(f.message.value) : ''}`;
-    document.getElementById('b-lignes').innerHTML = L.map(l => `<tr><td>${esc(l.nom)}</td><td>${l.q}</td><td>${euros(l.prix)}</td><td>${euros(l.total)}</td></tr>`).join('');
-    document.getElementById('b-total').textContent = euros(T);
+    $('b-date').textContent = 'Le ' + d.toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'});
+    $('b-client').innerHTML = `<strong>${esc(f.nom.value)}</strong><br>${esc(f.telephone.value)} · ${esc(f.email.value)}${f.message.value ? '<br>' + esc(f.message.value) : ''}`;
+    $('b-lignes').innerHTML = L.map(l => `<tr><td>${esc(l.nom)}${l.detail ? `<br><span class="note">${esc(l.detail)}</span>` : ''}</td><td>${l.q}</td><td>${euros(l.prix)}</td><td>${euros(l.total)}</td></tr>`).join('');
+    $('b-total').textContent = euros(T);
     document.querySelectorAll('.b-total2').forEach(x => x.textContent = euros(T));
-    document.getElementById('b-envoi').textContent = envoye
+    const infos = [];
+    infos.push(envoye
       ? 'Votre commande a bien été envoyée au club. Gardez ce bordereau : imprimez-le ou faites une capture d\'écran.'
-      : 'La commande n\'a pas pu être envoyée automatiquement. Faites une capture de ce bordereau et envoyez-la au 07 49 16 63 70 (WhatsApp) ou à contact@senseikaratedo.fr.';
-    document.getElementById('b-retrait').textContent = B.retrait || '';
-    document.getElementById('b-dojo-titre').textContent = B.paypalMe ? 'Ou payer au dojo' : 'Payer au dojo';
+      : 'La commande n\'a pas pu être envoyée automatiquement. Faites une capture de ce bordereau et envoyez-la au 07 49 16 63 70 (WhatsApp) ou à contact@senseikaratedo.fr.');
+    if (adhesions.length) infos.push('Adhésion : pensez à remettre au dojo le dossier complet (demande de licence signée, volet santé, photo).');
+    if (recu) infos.push(`Reçu fiscal : le club vous l'enverra par e-mail une fois votre don de ${euros(don)} encaissé.`);
+    $('b-envoi').innerHTML = infos.map(esc).join('<br>');
+    $('b-retrait').textContent = Object.values(panier).some(q => q > 0) ? (B.retrait || '') : '';
+    $('b-dojo-titre').textContent = B.paypalMe ? 'Ou payer au dojo' : 'Payer au dojo';
     if (B.paypalMe) {
-      document.getElementById('b-paypal').hidden = false;
-      document.getElementById('b-paypal-lien').href = `https://www.paypal.me/${encodeURIComponent(B.paypalMe)}/${T.toFixed(2)}EUR`;
+      $('b-paypal').hidden = false;
+      $('b-paypal-lien').href = `https://www.paypal.me/${encodeURIComponent(B.paypalMe)}/${T.toFixed(2)}EUR`;
     }
-    document.getElementById('choix').hidden = true;
-    const bd = document.getElementById('bordereau'); bd.hidden = false; bd.focus(); bd.scrollIntoView({behavior: 'smooth'});
+    $('choix').hidden = true;
+    const bd = $('bordereau'); bd.hidden = false; bd.focus(); bd.scrollIntoView({behavior: 'smooth'});
   });
   rafraichir();
 })();
