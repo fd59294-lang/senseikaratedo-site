@@ -46,8 +46,9 @@ window.CONTENU = {
     finLe: "2026-11-05"
   },
 
-  /* ACTU DE LA SEMAINE — mise à jour chaque lundi (même thème que le post Facebook).
-     date = lundi de la semaine (AAAA-MM-JJ). Pour la masquer : actu: null */
+  /* ACTU DE LA SEMAINE — n'est plus affichée sur le site (depuis le 4/11/2026).
+     Remplacée par « Nos dernières publications », qui lit directement posts/index.json
+     (les 4 derniers posts publiés, datés). Ce bloc peut rester tel quel. */
   actu: {
     date: "2026-11-02",
     titre: "Le salut",

@@ -246,14 +246,18 @@
   .annonce a{color:#fff;border:1.5px solid #fff;border-radius:999px;padding:.25rem .9rem;text-decoration:none;font-size:.95rem}
   .annonce a:hover{background:#fff;color:var(--hi-ink)}
 
-  /* Actu de la semaine */
-  .actu{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line)}
-  .actu .box{display:grid;grid-template-columns:auto 1fr;gap:1.5rem 2.5rem;align-items:start}
-  .actu .k{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hi-ink);font-weight:700}
-  .actu h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:.3rem 0 0}
-  .actu .d{color:var(--grey);font-size:.95rem;margin-top:.4rem}
-  .actu p.t{margin:0;font-size:1.1rem;max-width:64ch}
-  @media (max-width:760px){.actu .box{grid-template-columns:1fr}}
+  /* Nos dernières publications : les 4 derniers posts publiés, lus dans posts/index.json */
+  .pubs{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--line)}
+  .pubs .k{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hi-ink);font-weight:700}
+  .pubs h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:.3rem 0 1.5rem}
+  .pubs ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+  .pubs li{display:flex;flex-direction:column;gap:.5rem}
+  .pubs li img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);background:var(--wash);margin-bottom:.3rem}
+  .pubs time{color:var(--grey);font-size:.9rem}
+  .pubs h3{font-size:1.15rem}
+  .pubs details{font-size:.98rem}
+  .pubs details p{white-space:pre-line;margin:.4rem 0 0}
+  .pubs summary{cursor:pointer;color:var(--hi-ink);font-weight:500}
 
   /* Prochaine compétition */
   .next{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;background:var(--sumi);color:#fff;border-radius:14px;padding:1.1rem 1.4rem;margin:2.2rem 0 0}
@@ -315,10 +319,10 @@
     </div>
   </section>
 
-  <section class="actu" id="actu" aria-labelledby="t-actu" hidden>
-    <div class="wrap box">
-      <div><span class="k">Cette semaine au dojo</span><h2 id="t-actu"></h2><p class="d" id="actu-date"></p></div>
-      <p class="t" id="actu-texte"></p>
+  <section class="pubs" id="publications" aria-labelledby="t-pubs" hidden>
+    <div class="wrap">
+      <span class="k">Le fil du club</span><h2 id="t-pubs">Nos dernières publications</h2>
+      <ol id="pubs-liste"></ol>
     </div>
   </section>
 
@@ -546,14 +550,38 @@
     document.getElementById('annonce').hidden = false;
   })();
 
-  /* Actu de la semaine */
+  /* Nos dernières publications : les 4 derniers posts déjà publiés (posts/index.json).
+     Les plus anciens restent dans le fichier mais ne s'affichent plus ; un post programmé
+     n'apparaît qu'à son heure de publication. */
   (function(){
-    const a = (window.CONTENU || {}).actu; if (!a || !a.texte) return;
     const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-    document.getElementById('t-actu').textContent = a.titre;
-    if (a.date) document.getElementById('actu-date').textContent = `Semaine du ${Number(a.date.slice(8))} ${mois[Number(a.date.slice(5,7)) - 1]}`;
-    document.getElementById('actu-texte').textContent = a.texte;
-    document.getElementById('actu').hidden = false;
+    const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+    const sansEmoji = t => t.replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}]/gu, '').replace(/\s+/g, ' ').trim();
+    const casse = t => (t.charAt(0) + t.slice(1).toLowerCase()).replace(/sensei karaté do/gi, 'Sensei Karaté Do').replace(/\b(haussy|julie|shotokan)\b/g, m => m[0].toUpperCase() + m.slice(1));
+    fetch('posts/index.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : []).then(posts => {
+      if (!Array.isArray(posts)) return;
+      const now = Date.now();
+      const publies = posts.filter(p => p && p.texte && p.publier_le && Date.parse(p.publier_le) <= now)
+        .sort((x, y) => Date.parse(y.publier_le) - Date.parse(x.publier_le)).slice(0, 4);
+      if (!publies.length) return;
+      const ol = document.getElementById('pubs-liste');
+      publies.forEach(p => {
+        const lignes = p.texte.split('\n');
+        const corps = [];
+        for (const l of lignes.slice(1)) { if (/^(👉|📅|#)/u.test(l.trim())) break; corps.push(l); }
+        const d = new Date(p.publier_le);
+        const li = document.createElement('li');
+        if (p.image) { const img = document.createElement('img'); img.src = p.image.replace('https://senseikaratedo.fr/', ''); img.alt = ''; img.loading = 'lazy'; img.width = 400; img.height = 400; li.append(img); }
+        const t = document.createElement('time'); t.dateTime = p.publier_le.slice(0, 10);
+        t.textContent = `${jours[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]} ${d.getFullYear()}`;
+        const h = document.createElement('h3'); h.textContent = casse(sansEmoji(lignes[0] || ''));
+        li.append(t, h);
+        const txt = corps.join('\n').trim();
+        if (txt) { const det = document.createElement('details'); const sm = document.createElement('summary'); sm.textContent = 'Lire'; const pp = document.createElement('p'); pp.textContent = txt; det.append(sm, pp); li.append(det); }
+        ol.append(li);
+      });
+      document.getElementById('publications').hidden = false;
+    }).catch(() => {});
   })();
 
   /* Pass'Sport : visible jusqu'à la veille de finLe */

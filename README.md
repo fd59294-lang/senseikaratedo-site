@@ -17,7 +17,7 @@ Site statique publié sur Cloudflare Pages (domaine senseikaratedo.fr). Chaque p
 | `annonce` | Bandeau éphémère en haut, masqué seul à partir de `finLe` | Fred, à la demande |
 | `galerie` | Photos et vidéos (fichiers dans `medias/` ou liens YouTube) | Fred, à la demande |
 | `passSport` | Encart Pass'Sport dans les tarifs, masqué seul à partir de `finLe` | Chaque saison |
-| `actu` | « Cette semaine au dojo », même thème que le post du lundi | Tâche du lundi |
+| `actu` | Plus affiché depuis le 4/11/2026 : la section « Nos dernières publications » lit posts/index.json (4 derniers posts publiés, datés ; les anciens restent dans le fichier) | — |
 | `competition` | Classement de Julie, palmarès, calendrier kata | Tâche du lundi |
 | `ceintureDuMois` | Ceinture étudiée, 4 semaines | Fred (programme), affiché seul |
 | `lexique`, `kihon`, `katas`, `nunchaku` | Fiches de la rubrique Apprendre | Tâche du lundi (une fiche par semaine) |
