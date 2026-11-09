@@ -75,13 +75,12 @@ window.CONTENU = {
   /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
      On ne publie QUE la ligne de Julie, jamais celle des autres athlètes. */
   competition: {
-    majLe: "2026-10-27",
+    majLe: "2026-11-09",
     athlete: "Julie",
     discipline: "Kata",
     classements: [
       { rang: "15e", libelle: "française", detail: "Juniors filles, top français" },
-      { rang: "333e", libelle: "mondiale", detail: "Juniors filles, classement WKF" },
-      { rang: "617e", libelle: "mondiale", detail: "Seniors filles, classement WKF" }
+      { rang: "331e", libelle: "mondiale", detail: "Juniors filles, classement WKF" }
     ],
     /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
     palmares: [
@@ -93,13 +92,13 @@ window.CONTENU = {
        type : "qualif" = parcours obligatoire vers le Championnat de France (départemental, régional, France),
               "france" = autre compétition française, "inter" = compétition internationale. */
     calendrier: [
-      { date: "2026-11-07", fin: "",           nom: "Samoerai Leuven Open",                 lieu: "Louvain (Belgique)",            niveau: "Open international", etoiles: 2, type: "inter" },
       { date: "2026-11-28", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional", etoiles: 2, type: "qualif" },
       { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 3, type: "qualif" },
+      { date: "2026-12-09", fin: "",           nom: "Venice Cup",                           lieu: "Venise (Italie)",               niveau: "Open international", etoiles: 3, type: "inter" },
       { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF", etoiles: 4, type: "inter" },
-      { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international", etoiles: 1, type: "inter" },
+      { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international", etoiles: 3, type: "inter" },
       { date: "2027-02-05", fin: "",           nom: "Championnats d'Europe cadets, juniors, U21", lieu: "Erevan (Arménie)",        niveau: "EKF", etoiles: 5, type: "inter" },
-      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international", etoiles: 2, type: "inter" },
+      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international", etoiles: 3, type: "inter" },
       { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 2, type: "france" }
     ]
   },
@@ -140,6 +139,7 @@ window.CONTENU = {
     { jp: "Oss",         dire: "oss",          sens: "J'ai compris, je suis prêt. Marque l'engagement." },
     { jp: "Sensei",      dire: "sèn-sèï",      sens: "Professeur, celui qui est né avant." },
     { jp: "Senpai",      dire: "sèn-païe",     sens: "Élève plus ancien, qui montre l'exemple." },
+    { jp: "Onegaishimasu", dire: "o-nè-gaï-chi-mass", sens: "« S'il vous plaît » : on le dit en saluant son partenaire avant de travailler avec lui." },
     { jp: "Dojo",        dire: "do-djo",       sens: "Lieu où l'on étudie la voie." },
     { jp: "Karategi",    dire: "ka-ra-té-gui", sens: "La tenue de karaté (on dit souvent kimono)." },
     { jp: "Obi",         dire: "o-bi",         sens: "La ceinture." },
