@@ -1,0 +1,15 @@
+{
+  // Worker du site : fichiers statiques + envoi des formulaires (POST /envoi) par e-mail.
+  "name": "senseikaratedo-site",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/envoi"]
+  },
+  "send_email": [
+    { "name": "MAIL", "destination_address": "senseikaratedo59@gmail.com" }
+  ],
+  "observability": { "enabled": true }
+}

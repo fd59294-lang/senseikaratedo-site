@@ -226,7 +226,7 @@
 (function(){
   const C = window.CONTENU || {};
   const B = C.boutique || {articles: []}, A = C.adhesion, D = C.don || {};
-  const FORMSPREE = 'https://formspree.io/f/meaaknjg';
+  const ENVOI = '/envoi';
   const $ = id => document.getElementById(id);
   const esc = t => String(t).replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
   const euros = n => (n < 0 ? '−' : '') + (Math.round(Math.abs(n) * 100) / 100).toLocaleString('fr-FR', {minimumFractionDigits: Math.abs(n) % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
@@ -363,7 +363,7 @@
       if (don > 0) data.append('don', euros(don));
       if (recu) data.append('recu_fiscal', `${$('r-prenom').value} ${$('r-nom').value}, ${$('r-adresse').value}, ${$('r-cp').value} ${$('r-ville').value} – don de ${euros(don)} le ${d.toLocaleDateString('fr-FR')}`);
       data.append('message', f.message.value);
-      const r = await fetch(FORMSPREE, {method: 'POST', body: data, headers: {Accept: 'application/json'}});
+      const r = await fetch(ENVOI, {method: 'POST', body: data, headers: {Accept: 'application/json'}});
       envoye = r.ok;
     } catch (_) {}
     $('b-num').textContent = 'Commande n° ' + num;
