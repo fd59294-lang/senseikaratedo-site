@@ -172,7 +172,7 @@
       <div class="total" id="total-l" hidden><span>Total</span><span id="total">0 €</span></div>
       <form id="form" novalidate>
         <label>Nom et prénom<input name="nom" required autocomplete="name"></label>
-        <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel"></label>
+        <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel" inputmode="tel" pattern="[ ]*(0|\+33|0033|\+32|0032)[0-9 .\-]{8,16}" title="Numéro français, par exemple 06 12 34 56 78"></label>
         <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
         <label>Un mot ? <span class="note">Facultatif, par exemple le nom de l'adhérent</span><textarea name="message" rows="2"></textarea></label>
         <p class="err" id="err" role="alert" hidden></p>

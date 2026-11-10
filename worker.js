@@ -39,6 +39,15 @@ async function envoi(request, env) {
   const val = k => (champs.find(c => c[0] === k) || [])[1] || '';
   if (!val('nom') || !val('telephone')) return json({ ok: false, erreur: 'champs' }, 400);
 
+  // Filtre 1 : téléphone français (06 12 34 56 78, +33…) ou belge (+32…)
+  const tel = val('telephone').replace(/[\s.\-()]/g, '');
+  if (!/^0[1-9]\d{8}$|^(\+|00)33[1-9]\d{8}$|^(\+|00)32\d{8,9}$/.test(tel))
+    return json({ ok: false, erreur: 'telephone' }, 400);
+
+  // Filtre 2 : un lien dans le message = démarchage. Jeté sans prévenir l'expéditeur.
+  if (champs.some(([k, v]) => k !== 'email' && /https?:\/\/|www\.|\.(com|net|io|ai)\b/i.test(v)))
+    return json({ ok: true });
+
   const sujet = propre(data.get('_subject')) || `Demande de cours d'essai – ${propre(val('nom'))}`;
   const email = propre(val('email'));
   const corps = champs.map(([k, v]) => `${k.replace(/_/g, ' ').toUpperCase()} :\n${v}`).join('\n\n')
