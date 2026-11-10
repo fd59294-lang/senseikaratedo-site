@@ -11,5 +11,8 @@
   "send_email": [
     { "name": "MAIL", "destination_address": "senseikaratedo59@gmail.com" }
   ],
+  "ratelimits": [
+    { "name": "LIMITE", "namespace_id": "1001", "simple": { "limit": 3, "period": 60 } }
+  ],
   "observability": { "enabled": true }
 }

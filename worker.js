@@ -19,6 +19,12 @@ const json = (o, status = 200) => new Response(JSON.stringify(o), {
 });
 
 async function envoi(request, env) {
+  // Limite : 3 envois par minute et par adresse IP (anti-rafale)
+  if (env.LIMITE) {
+    const ip = request.headers.get('cf-connecting-ip') || 'inconnu';
+    const { success } = await env.LIMITE.limit({ key: ip });
+    if (!success) return json({ ok: false, erreur: 'trop' }, 429);
+  }
   const origine = request.headers.get('origin') || '';
   if (origine && !/^https:\/\/(www\.)?senseikaratedo\.fr$|^https:\/\/senseikaratedo-site\.[a-z0-9-]+\.workers\.dev$|^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origine))
     return json({ ok: false, erreur: 'origine' }, 403);
