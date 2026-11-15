@@ -69,7 +69,9 @@ window.CONTENU = {
      Règle du club : enfants de dos ou avec l'accord des parents, jamais de nom d'enfant. */
   galerie: {
     photos: [],
-    videos: []
+    videos: [
+      { fichier: "medias/kata-dojo.mp4", titre: "Julie, kata au dojo" }
+    ]
   },
 
   /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
