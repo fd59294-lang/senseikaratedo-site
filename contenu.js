@@ -146,6 +146,7 @@ window.CONTENU = {
     { jp: "Karategi",    dire: "ka-ra-té-gui", sens: "La tenue de karaté (on dit souvent kimono)." },
     { jp: "Obi",         dire: "o-bi",         sens: "La ceinture." },
     { jp: "Seiza",       dire: "sèï-za",       sens: "Position assise à genoux." },
+    { jp: "Dachi",       dire: "da-tchi",      sens: "Position. Zenkutsu-dachi, kiba-dachi, kokutsu-dachi : chaque position porte ce nom." },
     { jp: "Mokuso",      dire: "mo-kou-so",    sens: "Yeux fermés, on se concentre en silence." },
     { jp: "Yoi",         dire: "yoï",          sens: "Prêt ! Position d'attente." },
     { jp: "Hajime",      dire: "ha-dji-mé",    sens: "Commencez !" },
