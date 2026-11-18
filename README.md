@@ -25,3 +25,15 @@ Site statique publié sur Cloudflare Pages (domaine senseikaratedo.fr). Chaque p
 Vérifier après chaque modification :
 
     node -e "global.window={};require('./contenu.js');if(!window.CONTENU.competition||!window.CONTENU.ceintureDuMois)process.exit(1)"
+
+## posts/index.json
+
+Publications Facebook/Instagram programmées, publiées par le robot du Firebat via l'API Meta.
+
+| Champ | Rôle |
+|---|---|
+| `id` | `AAAA-MM-JJ-theme`, unique |
+| `publier_le` | Date et heure de publication (heure de Paris, ex. `2026-11-22T18:00:00+01:00`) |
+| `texte` | Le texte du post (moins de 2 000 caractères) |
+| `image` | Image JPEG carrée 1080×1080 (`posts/img/<id>.jpg`). Toujours présente, sert aussi de vignette |
+| `video` | Facultatif. URL d'une vidéo MP4 (H.264/AAC, de préférence verticale 9:16, 90 s max). Si présent, le robot publie une vidéo (Facebook) et un Reel (Instagram) au lieu de l'image |
