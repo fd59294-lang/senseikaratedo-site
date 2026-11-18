@@ -77,12 +77,12 @@ window.CONTENU = {
   /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
      On ne publie QUE la ligne de Julie, jamais celle des autres athlètes. */
   competition: {
-    majLe: "2026-11-09",
+    majLe: "2026-11-16",
     athlete: "Julie",
     discipline: "Kata",
     classements: [
-      { rang: "15e", libelle: "française", detail: "Juniors filles, top français" },
-      { rang: "331e", libelle: "mondiale", detail: "Juniors filles, classement WKF" }
+      { rang: "27e", libelle: "française", detail: "Juniors filles, top français" },
+      { rang: "330e", libelle: "mondiale", detail: "Juniors filles, classement WKF" }
     ],
     /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
     palmares: [
@@ -94,14 +94,22 @@ window.CONTENU = {
        type : "qualif" = parcours obligatoire vers le Championnat de France (départemental, régional, France),
               "france" = autre compétition française, "inter" = compétition internationale. */
     calendrier: [
-      { date: "2026-11-28", fin: "",           nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59)",             niveau: "Régional", etoiles: 2, type: "qualif" },
+      { date: "2026-11-28", fin: "2026-11-29", nom: "Championnat régional Hauts-de-France", lieu: "Sin-le-Noble (59) · juniors et seniors le dimanche 29",             niveau: "Régional", etoiles: 2, type: "qualif" },
       { date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata",           lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 3, type: "qualif" },
       { date: "2026-12-09", fin: "",           nom: "Venice Cup",                           lieu: "Venise (Italie)",               niveau: "Open international", etoiles: 3, type: "inter" },
       { date: "2026-12-10", fin: "",           nom: "Karate 1 Youth League",                lieu: "Venise (Italie)",               niveau: "WKF", etoiles: 4, type: "inter" },
       { date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                   lieu: "Rijeka (Croatie)",              niveau: "Open international", etoiles: 3, type: "inter" },
       { date: "2027-02-05", fin: "",           nom: "Championnats d'Europe cadets, juniors, U21", lieu: "Erevan (Arménie)",        niveau: "EKF", etoiles: 5, type: "inter" },
-      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international", etoiles: 3, type: "inter" },
+      { date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                  lieu: "Bratislava (Slovaquie)",        niveau: "Open international", etoiles: 4, type: "inter" },
       { date: "2027-04-10", fin: "2027-04-11", nom: "Coupe de France kata",                 lieu: "Villebon-sur-Yvette (91)",      niveau: "National, sur sélection", etoiles: 2, type: "france" }
+    ],
+    /* Inscriptions de Julie pour la saison (1er septembre → 31 août), ordre chronologique.
+       Le site n'affiche que la saison en cours : « Inscrite » tant que la date de fin n'est pas passée, puis « Terminée ». */
+    inscriptions: [
+      { saison: "2026-2027", date: "2026-11-28", fin: "2026-11-29", nom: "Championnat régional Hauts-de-France kata", lieu: "Sin-le-Noble (59)",        categories: "Juniors F, Seniors F" },
+      { saison: "2026-2027", date: "2026-12-05", fin: "2026-12-06", nom: "Championnat de France kata (si qualifiée)", lieu: "Villebon-sur-Yvette (91)", categories: "Juniors F, Seniors F" },
+      { saison: "2026-2027", date: "2027-01-15", fin: "2027-01-17", nom: "Grand Prix Croatia",                        lieu: "Rijeka (Croatie)",         categories: "Juniors F, Seniors F" },
+      { saison: "2026-2027", date: "2027-02-12", fin: "2027-02-14", nom: "Grand Prix Slovakia",                       lieu: "Bratislava (Slovaquie)",   categories: "Juniors F, Seniors F" }
     ]
   },
 
