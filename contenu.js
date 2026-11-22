@@ -12,7 +12,7 @@ window.CONTENU = {
   adhesion: {
     saison: "2026-2027",
     licence: 39,
-    reductionFamille: 20,   /* réduction par membre à partir du 2e d'une même famille */
+    reductionFamille: 30,   /* réduction par membre à partir du 2e d'une même famille */
     formules: [
       { id: "enfant",      libelle: "Enfants de 7 à 12 ans", court: "7-12 ans",         cours: "mardi 18h-19h15", cotisation: 90 },
       { id: "ado-adulte",  libelle: "13 ans et adultes",     court: "13 ans et adultes", cours: "samedi 14h-16h",  cotisation: 100 }
