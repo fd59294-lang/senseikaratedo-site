@@ -141,6 +141,37 @@ window.CONTENU = {
     ]
   },
 
+  /* CEINTURE SUIVANTE — préparée à l'avance, pas encore affichée par le site.
+     Le lundi de "debut", ce bloc remplace ceintureDuMois (puis on le retire). */
+  ceintureSuivante: {
+    ceinture: "Jaune",
+    couleur: "#F2C200",
+    debut: "2026-11-30",
+    intro: "La ceinture jaune, c'est la première étape après la découverte. On pose des bases solides : une position, un poing, une jambe, un déplacement, et les valeurs qui donnent un sens à tout le reste.",
+    semaines: [
+      { titre: "La position de base", texte: "Kiba-dachi, la position du cavalier, et on revoit zenkutsu-dachi.",
+        points: ["Kiba-dachi : pieds parallèles, écartés environ deux largeurs d'épaules.",
+                 "Genoux poussés vers l'extérieur, au-dessus des pieds ; le poids réparti sur les deux jambes.",
+                 "Dos droit, bassin placé, épaules basses.",
+                 "Zenkutsu-dachi : genou avant au-dessus du pied, jambe arrière tendue."] },
+      { titre: "Le poing et la jambe", texte: "Oi-zuki, le coup de poing en avançant, et mae-geri, le coup de pied de face.",
+        points: ["Oi-zuki : on avance en zenkutsu-dachi, le poing part du côté de la jambe qui arrive devant.",
+                 "Le poing arrive au moment où le pied se pose, l'autre main revient à la hanche (hikite).",
+                 "Mae-geri : le genou monte d'abord, puis on frappe avec le bol du pied (koshi), orteils relevés.",
+                 "La jambe revient aussitôt, genou levé, avant de se reposer."] },
+      { titre: "Le déplacement", texte: "Avancer et reculer en zenkutsu-dachi, avec gedan-barai et age-uke.",
+        points: ["Les hanches restent à la même hauteur, on ne sautille pas.",
+                 "Le pied qui se déplace passe près du pied d'appui.",
+                 "Gedan-barai : le poing part près de l'oreille opposée et balaie vers le bas, au-dessus du genou.",
+                 "Age-uke : l'avant-bras monte en tournant et s'arrête au-dessus du front."] },
+      { titre: "Les valeurs du karaté", texte: "Le karaté ne s'arrête pas aux techniques. Maître Gichin Funakoshi a laissé vingt préceptes (niju kun) pour guider le pratiquant.",
+        points: ["« Le karaté commence et finit par le salut. »",
+                 "« Il n'y a pas de première attaque en karaté. »",
+                 "« L'esprit d'abord, la technique ensuite. »",
+                 "« L'étude du karaté dure toute la vie. »"] }
+    ]
+  },
+
   /* Mots du dojo : jp = mot japonais, dire = prononciation, sens = traduction */
   lexique: [
     { jp: "Rei",         dire: "rèï",          sens: "Salut. On salue en entrant et en sortant du dojo." },
@@ -161,6 +192,7 @@ window.CONTENU = {
     { jp: "Yame",        dire: "ya-mé",        sens: "Stop !" },
     { jp: "Kiai",        dire: "ki-aï",        sens: "Le cri qui concentre l'énergie." },
     { jp: "Kime",        dire: "ki-mé",        sens: "La décision : toute la force au point d'impact." },
+    { jp: "Niju kun",    dire: "ni-djou kounne", sens: "Les vingt préceptes laissés par Maître Gichin Funakoshi, fondateur du Shotokan. Le premier : le karaté commence et finit par le salut." },
     { jp: "Zanshin",     dire: "zan-chine",    sens: "Rester vigilant après la technique." },
     { jp: "Kihon",       dire: "ki-onne",      sens: "Les techniques de base." },
     { jp: "Kata",        dire: "ka-ta",        sens: "Enchaînement codifié contre des adversaires imaginaires." },
