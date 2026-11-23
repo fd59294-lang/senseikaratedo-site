@@ -77,12 +77,12 @@ window.CONTENU = {
   /* COMPÉTITION — mis à jour chaque lundi depuis le doc Drive « Classement kata - données ».
      On ne publie QUE la ligne de Julie, jamais celle des autres athlètes. */
   competition: {
-    majLe: "2026-11-16",
+    majLe: "2026-11-23",
     athlete: "Julie",
     discipline: "Kata",
     classements: [
       { rang: "27e", libelle: "française", detail: "Juniors filles, top français" },
-      { rang: "330e", libelle: "mondiale", detail: "Juniors filles, classement WKF" }
+      { rang: "328e", libelle: "mondiale", detail: "Juniors filles, classement WKF" }
     ],
     /* Résultats positifs : date (AAAA-MM-JJ), competition, lieu, place, categorie */
     palmares: [
@@ -177,6 +177,7 @@ window.CONTENU = {
     { groupe: "Positions", jp: "Zenkutsu-dachi", sens: "Position avant : genou avant fléchi, jambe arrière tendue." },
     { groupe: "Positions", jp: "Kokutsu-dachi",  sens: "Position arrière : le poids surtout sur la jambe arrière." },
     { groupe: "Positions", jp: "Kiba-dachi",     sens: "Position du cavalier : pieds parallèles, genoux poussés vers l'extérieur." },
+    { groupe: "Coups de poing", jp: "Choku-zuki",  sens: "Coup de poing direct, sur place (souvent en heiko-dachi), l'autre main revient à la hanche (hikite)." },
     { groupe: "Coups de poing", jp: "Oi-zuki",     sens: "Coup de poing en avançant, du même côté que la jambe avant." },
     { groupe: "Coups de poing", jp: "Gyaku-zuki",  sens: "Coup de poing du bras opposé à la jambe avant, avec rotation des hanches." },
     { groupe: "Coups de poing", jp: "Kizami-zuki", sens: "Coup de poing rapide du bras avant." },
