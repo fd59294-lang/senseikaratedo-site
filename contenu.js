@@ -40,10 +40,10 @@ window.CONTENU = {
      Elle s'affiche jusqu'à la veille de "finLe" (AAAA-MM-JJ), puis disparaît toute seule.
      Pour la retirer avant : mettre annonce: null */
   annonce: {
-    texte: "Reprise des cours le mardi 3 novembre à 18h. Inscriptions tout au long de l'année.",
-    lien: "#inscription",
-    lienTexte: "S'inscrire",
-    finLe: "2026-11-05"
+    texte: "Week-end de compétition : pas de cours le samedi 28 et le dimanche 29 novembre. Reprise le mardi 1er décembre à 18h.",
+    lien: "#competition",
+    lienTexte: "Le calendrier",
+    finLe: "2026-12-01"
   },
 
   /* ACTU DE LA SEMAINE — n'est plus affichée sur le site (depuis le 4/11/2026).
